@@ -86,6 +86,7 @@
   align-self: stretch;
   color: var(--collection-1-gary1);
   display: flex;
+  column-gap: 4px;
   font-family: "SF Pro-Regular", Helvetica;
   font-size: 15px;
   font-weight: 400;

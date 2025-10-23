@@ -12,21 +12,25 @@ const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${WHATSAPP_PR
 
 export const HomePage = () => {
   const screenWidth = useWindowWidth();
-  const [showEmailToast, setShowEmailToast] = React.useState(false);
+  const [toastMessage, setToastMessage] = React.useState("");
   const toastTimeoutRef = React.useRef(null);
 
-  const showCopiedToast = React.useCallback(() => {
-    setShowEmailToast(true);
+  const showToast = React.useCallback((message) => {
+    setToastMessage(message);
 
     if (toastTimeoutRef.current) {
       clearTimeout(toastTimeoutRef.current);
     }
 
     toastTimeoutRef.current = setTimeout(() => {
-      setShowEmailToast(false);
+      setToastMessage("");
       toastTimeoutRef.current = null;
     }, 2000);
   }, []);
+
+  const showCopiedToast = React.useCallback(() => {
+    showToast("Email copied!");
+  }, [showToast]);
 
   React.useEffect(() => {
     return () => {
@@ -95,6 +99,20 @@ export const HomePage = () => {
     [copyEmailToClipboard],
   );
 
+  const handleDownloadAppClick = React.useCallback(() => {
+    showToast("Coming soon!");
+  }, [showToast]);
+
+  const handleDownloadAppKeyDown = React.useCallback(
+    (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        handleDownloadAppClick();
+      }
+    },
+    [handleDownloadAppClick],
+  );
+
   return (
     <div
       className="home-page"
@@ -107,9 +125,9 @@ export const HomePage = () => {
               : undefined,
       }}
     >
-      {showEmailToast && (
+      {toastMessage && (
         <div className="email-toast" role="status" aria-live="polite">
-          Email copied!
+          {toastMessage}
         </div>
       )}
       <div
@@ -182,7 +200,13 @@ export const HomePage = () => {
               />
 
               <div className="frame-5">
-                <div className="frame-6">
+                <div
+                  className="frame-6 download-app-trigger"
+                  onClick={handleDownloadAppClick}
+                  onKeyDown={handleDownloadAppKeyDown}
+                  role="button"
+                  tabIndex={0}
+                >
                   <AppleIcon8 className="apple-icon" />
                   <div className="apple-button-text-2">Download App</div>
                 </div>
@@ -236,7 +260,13 @@ export const HomePage = () => {
                     />
                   </div>
 
-                  <div className="frame-9">
+                  <div
+                    className="frame-9 download-app-trigger"
+                    onClick={handleDownloadAppClick}
+                    onKeyDown={handleDownloadAppKeyDown}
+                    role="button"
+                    tabIndex={0}
+                  >
                     <div className="frame-10">
                       <AppleIcon13 className="apple-icon-13" />
                       <div className="apple-button-text-4">Download App</div>
@@ -1423,7 +1453,11 @@ export const HomePage = () => {
             }}
           >
             <div
-              className="frame-26"
+              className="frame-26 download-app-trigger"
+              onClick={handleDownloadAppClick}
+              onKeyDown={handleDownloadAppKeyDown}
+              role="button"
+              tabIndex={0}
               style={{
                 alignItems: screenWidth < 750 ? "center" : undefined,
                 gap: screenWidth < 750 ? "8px" : undefined,

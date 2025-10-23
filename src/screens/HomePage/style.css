@@ -97,6 +97,15 @@
   width: 160px;
 }
 
+.home-page .download-app-trigger {
+  cursor: pointer;
+}
+
+.home-page .download-app-trigger:focus-visible {
+  outline: 2px solid var(--collection-1-primary);
+  outline-offset: 2px;
+}
+
 .home-page a.frame-6 {
   color: inherit;
   cursor: pointer;
@@ -1948,8 +1957,8 @@
 
 .home-page .email-toast {
   align-items: center;
-  background-color: rgba(17, 17, 17, 0.9);
-  border-radius: 12px;
+  background-color: rgba(17, 17, 17, 0.8);
+  border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   color: #ffffff;
   display: inline-flex;
@@ -1960,7 +1969,7 @@
   letter-spacing: 0.5px;
   padding: 12px 20px;
   position: fixed;
-  top: 40%;
+  top: 45%;
   transform: translate(-50%, -50%);
   z-index: 1000;
 }
