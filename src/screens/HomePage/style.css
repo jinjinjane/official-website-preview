@@ -97,6 +97,12 @@
   width: 160px;
 }
 
+.home-page a.frame-6 {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .home-page .apple-icon {
   height: 20px !important;
   margin-left: -2.50px !important;
@@ -293,11 +299,14 @@
   align-items: flex-start;
   background-color: var(--collection-1-gary1);
   border-radius: 32px;
+  color: inherit;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
   gap: 10px;
   height: 60px;
   padding: 18px 20px;
+  text-decoration: none;
   position: relative;
   width: 180px;
 }
@@ -1785,10 +1794,13 @@
 
 .home-page .frame-29 {
   align-items: center;
+  color: inherit;
   display: inline-flex;
+  cursor: pointer;
   gap: 6px;
   height: 24px;
   position: relative;
+  text-decoration: none;
   width: 140px;
 }
 
