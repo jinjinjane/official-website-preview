@@ -6,24 +6,31 @@ import { AppleIcon13 } from "../../icons/AppleIcon13";
 import "./style.css";
 
 const SUPPORT_EMAIL = "support@fluxvita.com";
+const WHATSAPP_PHONE_NUMBER = "188645888899";
+const WHATSAPP_PRESET_MESSAGE = encodeURIComponent("Hi, Jovida!");
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${WHATSAPP_PRESET_MESSAGE}`;
 
 export const HomePage = () => {
   const screenWidth = useWindowWidth();
-  const [showEmailToast, setShowEmailToast] = React.useState(false);
+  const [toastMessage, setToastMessage] = React.useState("");
   const toastTimeoutRef = React.useRef(null);
 
-  const showCopiedToast = React.useCallback(() => {
-    setShowEmailToast(true);
+  const showToast = React.useCallback((message) => {
+    setToastMessage(message);
 
     if (toastTimeoutRef.current) {
       clearTimeout(toastTimeoutRef.current);
     }
 
     toastTimeoutRef.current = setTimeout(() => {
-      setShowEmailToast(false);
+      setToastMessage("");
       toastTimeoutRef.current = null;
     }, 2000);
   }, []);
+
+  const showCopiedToast = React.useCallback(() => {
+    showToast("Email copied!");
+  }, [showToast]);
 
   React.useEffect(() => {
     return () => {
@@ -92,6 +99,20 @@ export const HomePage = () => {
     [copyEmailToClipboard],
   );
 
+  const handleDownloadAppClick = React.useCallback(() => {
+    showToast("Coming soon!");
+  }, [showToast]);
+
+  const handleDownloadAppKeyDown = React.useCallback(
+    (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        handleDownloadAppClick();
+      }
+    },
+    [handleDownloadAppClick],
+  );
+
   return (
     <div
       className="home-page"
@@ -104,9 +125,9 @@ export const HomePage = () => {
               : undefined,
       }}
     >
-      {showEmailToast && (
+      {toastMessage && (
         <div className="email-toast" role="status" aria-live="polite">
-          Email copied!
+          {toastMessage}
         </div>
       )}
       <div
@@ -179,12 +200,24 @@ export const HomePage = () => {
               />
 
               <div className="frame-5">
-                <div className="frame-6">
+                <div
+                  className="frame-6 download-app-trigger"
+                  onClick={handleDownloadAppClick}
+                  onKeyDown={handleDownloadAppKeyDown}
+                  role="button"
+                  tabIndex={0}
+                >
                   <AppleIcon8 className="apple-icon" />
                   <div className="apple-button-text-2">Download App</div>
                 </div>
 
-                <Link className="frame-6" to="/message">
+                <a
+                  className="frame-6"
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Start with WhatsApp"
+                >
                   <img
                     className="apple-icon-2"
                     alt="Apple icon"
@@ -192,7 +225,7 @@ export const HomePage = () => {
                   />
 
                   <div className="apple-button-text-3">Quick Start</div>
-                </Link>
+                </a>
               </div>
 
               <img
@@ -227,14 +260,26 @@ export const HomePage = () => {
                     />
                   </div>
 
-                  <div className="frame-9">
+                  <div
+                    className="frame-9 download-app-trigger"
+                    onClick={handleDownloadAppClick}
+                    onKeyDown={handleDownloadAppKeyDown}
+                    role="button"
+                    tabIndex={0}
+                  >
                     <div className="frame-10">
                       <AppleIcon13 className="apple-icon-13" />
                       <div className="apple-button-text-4">Download App</div>
                     </div>
                   </div>
 
-                  <div className="frame-11">
+                  <a
+                    className="frame-11"
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Start with WhatsApp"
+                  >
                     <div className="frame-10">
                       <img
                         className="apple-icon-3"
@@ -244,7 +289,7 @@ export const HomePage = () => {
 
                       <div className="apple-button-text-4">Quick Start</div>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
 
@@ -1408,7 +1453,11 @@ export const HomePage = () => {
             }}
           >
             <div
-              className="frame-26"
+              className="frame-26 download-app-trigger"
+              onClick={handleDownloadAppClick}
+              onKeyDown={handleDownloadAppKeyDown}
+              role="button"
+              tabIndex={0}
               style={{
                 alignItems: screenWidth < 750 ? "center" : undefined,
                 gap: screenWidth < 750 ? "8px" : undefined,
@@ -1468,29 +1517,35 @@ export const HomePage = () => {
                       : undefined,
               }}
             >
-              {screenWidth < 750 && (
-                <>
-                  <img
-                    className="apple-icon-2"
-                    alt="Apple icon"
-                    src="/img/apple-icon-9.svg"
-                  />
+              <a
+                className="frame-29"
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Start with WhatsApp"
+              >
+                {screenWidth < 750 ? (
+                  <>
+                    <img
+                      className="apple-icon-2"
+                      alt="Apple icon"
+                      src="/img/apple-icon-9.svg"
+                    />
 
-                  <div className="apple-button-text-3">Quick Start</div>
-                </>
-              )}
+                    <div className="apple-button-text-3">Quick Start</div>
+                  </>
+                ) : (
+                  <>
+                    <img
+                      className="apple-icon-3"
+                      alt="Apple icon"
+                      src="/img/apple-icon-15.svg"
+                    />
 
-              {screenWidth >= 750 && (
-                <div className="frame-29">
-                  <img
-                    className="apple-icon-3"
-                    alt="Apple icon"
-                    src="/img/apple-icon-15.svg"
-                  />
-
-                  <div className="apple-button-text-4">Quick Start</div>
-                </div>
-              )}
+                    <div className="apple-button-text-4">Quick Start</div>
+                  </>
+                )}
+              </a>
             </div>
           </div>
         </div>
@@ -1555,8 +1610,18 @@ export const HomePage = () => {
                   © 2025 FluxVita. All rights reserved.
                 </p>
 
-                <p className="footer-text-2">8 THE GREEN STE R, DOVER, DE</p>
+                {/* <p className="footer-text-2">8 THE GREEN STE R, DOVER, DE</p> */}
 
+                <Link
+                  className="footer-text-2"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  to="/terms"
+                >
+                  Terms of Use
+                </Link>
+
+                
                 <Link
                   className="footer-text-2"
                   rel="noopener noreferrer"
@@ -1565,7 +1630,9 @@ export const HomePage = () => {
                 >
                   Privacy Policy
                 </Link>
+
               </div>
+              
 
               <div className="frame-31">
                 <div className="contact-title">Contact us</div>
@@ -1644,10 +1711,20 @@ export const HomePage = () => {
                   className="footer-text-2"
                   rel="noopener noreferrer"
                   target="_blank"
+                  to="/terms"
+                >
+                  Terms of Use
+                </Link>
+
+                <Link
+                  className="footer-text-2"
+                  rel="noopener noreferrer"
+                  target="_blank"
                   to="/privacy"
                 >
                   Privacy Policy
                 </Link>
+
               </div>
 
               <img

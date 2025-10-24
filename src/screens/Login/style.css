@@ -90,6 +90,7 @@
   padding: 16px 12px;
   position: relative;
   width: 100%;
+  cursor: pointer;
 }
 
 .login .div-6 {
@@ -133,6 +134,7 @@
   padding: 16px 12px;
   position: relative;
   width: 100%;
+  cursor: pointer;
 }
 
 .login .apple-button-text-6 {
@@ -148,4 +150,15 @@
   margin-top: -1.00px;
   position: relative;
   width: 155px;
+}
+
+.login .auth-error {
+  color: #d93025;
+  font-family: "SF Pro-Regular", Helvetica;
+  font-size: 12px;
+  letter-spacing: -0.12px;
+  line-height: 16px;
+  margin: 8px 0 0;
+  text-align: center;
+  width: 100%;
 }

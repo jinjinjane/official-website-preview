@@ -97,6 +97,21 @@
   width: 160px;
 }
 
+.home-page .download-app-trigger {
+  cursor: pointer;
+}
+
+.home-page .download-app-trigger:focus-visible {
+  outline: 2px solid var(--collection-1-primary);
+  outline-offset: 2px;
+}
+
+.home-page a.frame-6 {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .home-page .apple-icon {
   height: 20px !important;
   margin-left: -2.50px !important;
@@ -293,11 +308,14 @@
   align-items: flex-start;
   background-color: var(--collection-1-gary1);
   border-radius: 32px;
+  color: inherit;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
   gap: 10px;
   height: 60px;
   padding: 18px 20px;
+  text-decoration: none;
   position: relative;
   width: 180px;
 }
@@ -1785,10 +1803,13 @@
 
 .home-page .frame-29 {
   align-items: center;
+  color: inherit;
   display: inline-flex;
+  cursor: pointer;
   gap: 6px;
   height: 24px;
   position: relative;
+  text-decoration: none;
   width: 140px;
 }
 
@@ -1936,8 +1957,8 @@
 
 .home-page .email-toast {
   align-items: center;
-  background-color: rgba(17, 17, 17, 0.9);
-  border-radius: 12px;
+  background-color: rgba(17, 17, 17, 0.8);
+  border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   color: #ffffff;
   display: inline-flex;
@@ -1948,7 +1969,7 @@
   letter-spacing: 0.5px;
   padding: 12px 20px;
   position: fixed;
-  top: 40%;
+  top: 45%;
   transform: translate(-50%, -50%);
   z-index: 1000;
 }

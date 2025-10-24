@@ -6,6 +6,7 @@ import { LoginSuccess } from "./screens/LoginSuccess";
 import { Message } from "./screens/Message";
 import { Pro } from "./screens/Pro";
 import { PrivacyPolicy } from "./screens/privacy";
+import { TermsOfUse } from "./screens/terms";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,14 @@ const router = createBrowserRouter([
   {
     path: "/privacy-policy",
     element: <PrivacyPolicy />,
+  },
+  {
+    path: "/terms",
+    element: <TermsOfUse />,
+  },
+  {
+    path: "/terms-of-use",
+    element: <TermsOfUse />,
   },
   {
     path: "/message",
