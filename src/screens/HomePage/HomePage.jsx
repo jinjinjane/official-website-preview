@@ -6,7 +6,7 @@ import { AppleIcon13 } from "../../icons/AppleIcon13";
 import "./style.css";
 
 const SUPPORT_EMAIL = "support@fluxvita.com";
-const WHATSAPP_PHONE_NUMBER = "188645888899";
+const WHATSAPP_PHONE_NUMBER = "85244547208";
 const WHATSAPP_PRESET_MESSAGE = encodeURIComponent("Hi, Jovida!");
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${WHATSAPP_PRESET_MESSAGE}`;
 
