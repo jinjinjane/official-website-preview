@@ -17,10 +17,9 @@
 }
 
 .terms-of-use__header {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .terms-of-use__icon {
@@ -34,17 +33,28 @@
   font-size: 32px;
   font-weight: 700;
   letter-spacing: -0.3px;
-  margin: 0;
+  margin: 0 0 20px;
+}
+
+.terms-of-use__subtitle {
+  color: rgba(44, 44, 43, 0.85);
+  font-family: "Urbanist", "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 4px 0 0;
 }
 
 .terms-of-use__updated {
   color: rgba(44, 44, 43, 0.7);
   font-size: 16px;
+  line-height: 1.5;
   margin: 4px 0 0;
 }
 
 .terms-of-use__section {
   margin: 0;
+  scroll-margin-top: 120px;
   text-align: left;
 }
 
@@ -65,6 +75,13 @@
   margin: 0 0 16px;
 }
 
+.terms-of-use__section h3 {
+  color: #1b1b1b;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 24px 0 12px;
+}
+
 .terms-of-use__section ul,
 .terms-of-use__section ol {
   color: rgba(44, 44, 43, 0.9);
@@ -81,13 +98,32 @@
   margin-bottom: 8px;
 }
 
+.terms-of-use__section a {
+  color: #1355ff;
+  text-decoration: none;
+}
+
+.terms-of-use__section a:hover,
+.terms-of-use__section a:focus-visible {
+  text-decoration: underline;
+}
+
+.terms-of-use__toc {
+  display: grid;
+  gap: 10px;
+  list-style: decimal;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+
 .terms-of-use__list {
-  list-style: none;
-  padding-left: 0;
+  list-style: disc;
+  padding-left: 20px;
 }
 
 .terms-of-use__list li {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .terms-of-use__list li span {
@@ -145,6 +181,10 @@
 
   .terms-of-use__section h2 {
     font-size: 21px;
+  }
+
+  .terms-of-use__section h3 {
+    font-size: 17px;
   }
 
   .terms-of-use__section ul,
