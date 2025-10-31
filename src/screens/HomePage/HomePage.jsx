@@ -1618,7 +1618,7 @@ export const HomePage = () => {
                   target="_blank"
                   to="/terms"
                 >
-                  Terms of Use
+                  Terms and Conditions
                 </Link>
 
                 
@@ -1713,7 +1713,7 @@ export const HomePage = () => {
                   target="_blank"
                   to="/terms"
                 >
-                  Terms of Use
+                  Terms and Conditions
                 </Link>
 
                 <Link

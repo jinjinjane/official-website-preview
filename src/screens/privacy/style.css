@@ -33,21 +33,32 @@
   font-size: 32px;
   font-weight: 700;
   letter-spacing: -0.3px;
-  margin: 0;
+  margin: 0 0 20px;
+}
+
+.privacy-policy__subtitle {
+  color: rgba(44, 44, 43, 0.85);
+  font-family: "Urbanist", "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 4px 0 0;
 }
 
 .privacy-policy__updated {
   color: rgba(44, 44, 43, 0.7);
   font-size: 16px;
-  margin: 4px 0 0;
+  line-height: 1.5;
+  margin: 6px 0 0;
 }
 
 .privacy-policy__section {
   margin: 0;
+  scroll-margin-top: 120px;
+  text-align: left;
 }
 
 .privacy-policy__section h2 {
-  margin-left: 0;
   color: #1b1b1b;
   font-family: "Urbanist", "Inter", "Helvetica Neue", Arial, sans-serif;
   font-size: 24px;
@@ -71,42 +82,47 @@
   margin: 0 0 16px;
 }
 
-.privacy-policy__section ul {
+.privacy-policy__section ul,
+.privacy-policy__section ol {
   color: rgba(44, 44, 43, 0.9);
   font-size: 16px;
   letter-spacing: 0.01em;
   line-height: 1.65;
-  list-style: none;
   margin: 0 0 16px;
   padding-left: 0;
+  list-style-position: inside;
 }
 
-.privacy-policy__section ul li {
+.privacy-policy__section ul {
+  list-style-type: disc;
+}
+
+.privacy-policy__section ol {
+  list-style-type: decimal;
+}
+
+.privacy-policy__section ul li,
+.privacy-policy__section ol li {
   margin-bottom: 8px;
-  padding-left: 0;
 }
 
-.privacy-policy__list li span {
-  color: #1b1b1b;
-  font-weight: 600;
-}
-
-.privacy-policy__address {
-  display: flex;
-  flex-direction: column;
-  font-style: normal;
-  gap: 4px;
-  margin: 0;
-}
-
-.privacy-policy__address a {
+.privacy-policy__section a {
   color: #1355ff;
   text-decoration: none;
 }
 
-.privacy-policy__address a:hover,
-.privacy-policy__address a:focus-visible {
+.privacy-policy__section a:hover,
+.privacy-policy__section a:focus-visible {
   text-decoration: underline;
+}
+
+.privacy-policy__toc {
+  display: grid;
+  gap: 10px;
+  list-style: decimal;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
 }
 
 @media (max-width: 600px) {
@@ -131,7 +147,8 @@
     font-size: 17px;
   }
 
-  .privacy-policy__section ul {
-    padding-left: 20px;
+  .privacy-policy__section ul,
+  .privacy-policy__section ol {
+    padding-left: 0;
   }
 }
