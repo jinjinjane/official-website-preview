@@ -9,6 +9,7 @@ const SUPPORT_EMAIL = "support@fluxvita.com";
 const WHATSAPP_PHONE_NUMBER = "12138039457";
 const WHATSAPP_PRESET_MESSAGE = encodeURIComponent("Hi, Jovida!");
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${WHATSAPP_PRESET_MESSAGE}`;
+const IOS_APP_STORE_URL = "https://apps.apple.com/app/id6752009326";
 
 export const HomePage = () => {
   const screenWidth = useWindowWidth();
@@ -100,8 +101,10 @@ export const HomePage = () => {
   );
 
   const handleDownloadAppClick = React.useCallback(() => {
-    showToast("Coming soon!");
-  }, [showToast]);
+    if (typeof window !== "undefined") {
+      window.open(IOS_APP_STORE_URL, "_blank", "noopener,noreferrer");
+    }
+  }, []);
 
   const handleDownloadAppKeyDown = React.useCallback(
     (event) => {
