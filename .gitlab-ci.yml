@@ -4,9 +4,8 @@ variables:
   VERSION: $CI_COMMIT_SHA
   IMAGE_TAG_PROD: ${CI_COMMIT_TAG}-${CI_COMMIT_SHORT_SHA}
   IMAGE_TAG_DEV: dev-${CI_COMMIT_BRANCH}${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}
-  IMAGE: sea-registry.us-east-1.cr.aliyuncs.com/vita/${CI_PROJECT_PATH}
-  IMAGE_US_EAST: sea-registry.us-east-1.cr.aliyuncs.com/vita/${CI_PROJECT_PATH}
-  IMAGE_HK: sea-registry.us-east-1.cr.aliyuncs.com/vita/${CI_PROJECT_PATH}
+  IMAGE_US_EAST: sea-registry.us-east-1.cr.aliyuncs.com/${CI_PROJECT_PATH}
+  IMAGE_SGP: sea-registry.ap-southeast-1.cr.aliyuncs.com/${CI_PROJECT_PATH}
 
 workflow:
   rules:
@@ -29,7 +28,8 @@ default:
     - echo "CI_COMMIT_TAG ${CI_COMMIT_TAG}"
     - echo "CI_COMMIT_SHA ${CI_COMMIT_SHA}"
     - echo "IMAGE_TAG_DEV ${IMAGE_TAG_DEV}"
-    - echo "IMAGE_HK ${IMAGE_HK}"
+    - echo "IMAGE_US_EAST ${IMAGE_US_EAST}"
+    - echo "IMAGE_SGP ${IMAGE_SGP}"
     - export NODE_VERSION=18
     - node --version
     - npm --version
@@ -40,62 +40,71 @@ stages:
   - image
   - deploy
 
+
 lint:
   stage: lint
   script:
-    - npm ci
-    - npm run build
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
+    - make golint
 
-image-push-hk-dev:
+image-push-sgp-dev:
   stage: image
   script:
-    - docker build -f "${CI_PROJECT_DIR}/Dockerfile" -t ${IMAGE_HK}:${IMAGE_TAG_DEV} ${CI_PROJECT_DIR}
-    - docker push ${IMAGE_HK}:${IMAGE_TAG_DEV}
+    - cp ${HOME}/bin/instgo ${CI_PROJECT_DIR}/instgo-linux-amd64
+    - docker build --secret id=gitlab-credentials,src=${HOME}/.netrc -f "${CI_PROJECT_DIR}/Dockerfile" -t ${IMAGE_SGP}:${IMAGE_TAG_DEV} ${CI_PROJECT_DIR}
+    - docker push ${IMAGE_SGP}:${IMAGE_TAG_DEV}
   rules:
     - if: $CI_COMMIT_BRANCH =~ /^release-.*/ && $CI_COMMIT_TITLE =~ /.*image-push.*/
+    #    - if: $CI_COMMIT_TITLE =~ /.*deploy-dev.*/
+    #    - if: $CI_COMMIT_TITLE =~ /.*deploy-both.*/
+    #    - if: $CI_COMMIT_TITLE =~ /.*deploy-test.*/
+    #    - if: $CI_COMMIT_TITLE =~ /.*deploy-staging.*/
     - when: manual
       allow_failure: true
+
 
 image-push-us-prod:
   stage: image
   script:
-    - docker build -f "${CI_PROJECT_DIR}/Dockerfile" -t ${IMAGE_US_EAST}:${IMAGE_TAG_DEV} ${CI_PROJECT_DIR}
-    - docker push ${IMAGE_US_EAST}:${IMAGE_TAG_DEV}
+    - cp ${HOME}/bin/instgo ${CI_PROJECT_DIR}/instgo-linux-amd64
+    - docker build --secret id=gitlab-credentials,src=${HOME}/.netrc -f "${CI_PROJECT_DIR}/Dockerfile" -t ${IMAGE_US_EAST}:${IMAGE_TAG_PROD} ${CI_PROJECT_DIR}
+    - docker push ${IMAGE_US_EAST}:${IMAGE_TAG_PROD}
   rules:
     - if: $CI_COMMIT_TAG =~ /^release-.*/
+    #    - if: $CI_COMMIT_TITLE =~ /.*deploy-dev.*/
+    #    - if: $CI_COMMIT_TITLE =~ /.*deploy-both.*/
+    #    - if: $CI_COMMIT_TITLE =~ /.*deploy-test.*/
+    #    - if: $CI_COMMIT_TITLE =~ /.*deploy-staging.*/
     - when: manual
       allow_failure: true
 
-deploy-dev:
-  stage: deploy
-  tags:
-    - dev-ci-ucenter-cn
-  variables:
-    CI_DEBUG_TRACE: "true"
-  script:
-    - /deploy/run.sh dev ${IMAGE_TAG_DEV}
-  rules:
-    - if: $CI_COMMIT_TITLE =~ /.*deploy-dev.*/
-    - if: $CI_COMMIT_TITLE =~ /.*deploy-both.*/
-    - when: manual
-      allow_failure: true
 
-deploy-us-east-test:
-  stage: deploy
-  tags:
-    - us-east
-  image:
-    name: cr.aliyuncs.com/devops/stepbase-build:latest
-  variables:
-    CI_DEBUG_TRACE: "true"
-  script:
-    - /deploy/run.sh test ${IMAGE_TAG_DEV}
-  rules:
-    - if: $CI_COMMIT_TITLE =~ /.*deploy-test.*/
-    - if: $CI_COMMIT_TITLE =~ /.*deploy-both.*/
-    - when: manual
-      allow_failure: true
+#deploy-sgp-dev:
+#  stage: deploy
+#  tags:
+#    - dev-ci-ucenter-cn
+#  variables:
+#    CI_DEBUG_TRACE: "true"
+#  script:
+#    - /deploy/run.sh dev ${IMAGE_TAG_DEV}
+#  rules:
+#    # - if: $CI_COMMIT_TITLE =~ /^.*(deploy|deploy[^-].*)$/
+#    - if: $CI_COMMIT_TITLE =~ /.*deploy-dev.*/
+#    - if: $CI_COMMIT_TITLE =~ /.*deploy-both.*/
+#    - when: manual
+#      allow_failure: true
+#
+#deploy-us-east-test:
+#  stage: deploy
+#  tags:
+#    - us-east
+#  image:
+#    name: cr.aliyuncs.com/devops/stepbase-build:latest
+#  variables:
+#    CI_DEBUG_TRACE: "true"
+#  script:
+#    - /deploy/run.sh test ${IMAGE_TAG_DEV}
+#  rules:
+#    - if: $CI_COMMIT_TITLE =~ /.*deploy-test.*/
+#    - if: $CI_COMMIT_TITLE =~ /.*deploy-both.*/
+#    - when: manual
+#      allow_failure: true
