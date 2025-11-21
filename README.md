@@ -21,14 +21,11 @@ VITE_API_BASE_URL=https://api.your-domain.com
 # Google Identity Services
 VITE_GOOGLE_CLIENT_ID=xxx.apps.googleusercontent.com
 VITE_GOOGLE_REDIRECT_URI=https://your-domain.com/oauth2/google
-VITE_GOOGLE_SERVER_CLIENT_ID=xxx.apps.googleusercontent.com # 若后端需要
 
 # Sign in with Apple
 VITE_APPLE_CLIENT_ID=com.your.bundle.id
 VITE_APPLE_REDIRECT_URI=https://your-domain.com/oauth2/apple
 VITE_APPLE_SCOPE=name email
-VITE_APPLE_STATE=optional-static-state
-VITE_APPLE_NONCE=optional-nonce
 ```
 
 > `VITE_API_BASE_URL` 应指向你服务端的公共地址，前端会向 `${VITE_API_BASE_URL}/auth/{provider}` 发送授权码或 token 以换取自有 Session。

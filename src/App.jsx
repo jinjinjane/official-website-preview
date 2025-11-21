@@ -7,6 +7,8 @@ import { Message } from "./screens/Message";
 import { Pro } from "./screens/Pro";
 import { PrivacyPolicy } from "./screens/privacy";
 import { TermsOfUse } from "./screens/terms";
+import { LoginGoogle } from "./screens/LoginGoogle";
+import { LoginApple } from "./screens/LoginApple/LoginApple";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +50,14 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/login-google",
+    element: <LoginGoogle />,
+  },
+  {
+    path: "/login-apple",
+    element: <LoginApple />,
   },
 ]);
 

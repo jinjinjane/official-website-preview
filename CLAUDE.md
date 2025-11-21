@@ -130,14 +130,12 @@ VITE_API_BASE_URL=https://api.your-domain.com
 # Google OAuth
 VITE_GOOGLE_CLIENT_ID=
 VITE_GOOGLE_REDIRECT_URI=
-VITE_GOOGLE_SERVER_CLIENT_ID=  # Optional, for backend verification
 
 # Apple OAuth
 VITE_APPLE_CLIENT_ID=
 VITE_APPLE_REDIRECT_URI=
 VITE_APPLE_SCOPE=name email     # Default if not specified
 VITE_APPLE_STATE=               # Optional
-VITE_APPLE_NONCE=               # Optional
 ```
 
 Missing credentials will disable respective login buttons but won't break the app.

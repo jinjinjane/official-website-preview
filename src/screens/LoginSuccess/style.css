@@ -110,22 +110,7 @@
   font-weight: 700;
 }
 
-.login-success .apple-button-text-wrapper {
-  all: unset;
-  align-items: center;
-  background-color: var(--collection-1-gary1);
-  border-radius: 32px;
-  box-sizing: border-box;
-  display: flex;
-  gap: 8px;
-  height: 56px;
-  justify-content: center;
-  left: 12px;
-  padding: 12px 16px;
-  position: absolute;
-  top: 474px;
-  width: 330px;
-}
+
 
 .login-success .apple-button-text-5 {
   align-items: center;

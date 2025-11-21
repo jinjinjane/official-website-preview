@@ -11,7 +11,7 @@ export const Apple1 = ({ className }) => {
       className={`apple-1 ${className}`}
       fill="none"
       height="20"
-      viewBox="0 0 20 20"
+      viewBox="2 1.5 16 17"
       width="20"
       xmlns="http://www.w3.org/2000/svg"
     >

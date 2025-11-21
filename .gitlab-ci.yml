@@ -54,7 +54,7 @@ lint:
 image-push-sgp-dev:
   stage: image
   script:
-    - docker build -f "${CI_PROJECT_DIR}/Dockerfile" -t ${IMAGE_SGP}:${IMAGE_TAG_DEV} ${CI_PROJECT_DIR}
+    - docker build -f "${CI_PROJECT_DIR}/Dockerfile.test" -t ${IMAGE_SGP}:${IMAGE_TAG_DEV} ${CI_PROJECT_DIR}
     - docker push ${IMAGE_SGP}:${IMAGE_TAG_DEV}
   rules:
     - if: $CI_COMMIT_BRANCH =~ /^release-.*/ && $CI_COMMIT_TITLE =~ /.*image-push.*/
