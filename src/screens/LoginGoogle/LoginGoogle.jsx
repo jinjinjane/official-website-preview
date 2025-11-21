@@ -1,11 +1,9 @@
 import React, {
   useCallback,
   useEffect,
-  useMemo,
-  useRef,
   useState,
 } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { oauthForWhatsapp } from "../../apis/passprot";
 import { reportUserProfileForWhatsapp, buildProfilesFromBrowser } from "../../apis/profile";
 import "./style.css";
@@ -13,7 +11,6 @@ import { authConfig, WHATSAPP_SUCCESS_URL } from "../../config/auth";
 
 
 export const LoginGoogle = () => {
-  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [error, setError] = useState(null);
   const [isAuthFinished, setIsAuthFinished] = useState(false);
@@ -23,7 +20,9 @@ export const LoginGoogle = () => {
   const googleState = searchParams.get('state'); // state 就是 nonce
   const googleError = searchParams.get('error'); // Google 可能返回错误
 
-  const clickRef = useRef(null);
+  const handleStartClick = useCallback(() => {
+    window.open(WHATSAPP_SUCCESS_URL, '_blank');
+  }, []);
 
   // 处理 Google OAuth 错误
   useEffect(() => {
@@ -31,7 +30,7 @@ export const LoginGoogle = () => {
       const errorDescription = searchParams.get('error_description') || googleError;
       setError(errorDescription);
     }
-  }, [googleError, searchParams, navigate]);
+  }, [googleError, searchParams]);
 
   // 处理 Google OAuth 重定向回调
   useEffect(() => {
@@ -60,7 +59,7 @@ export const LoginGoogle = () => {
           setIsAuthFinished(true); // 即使失败也隐藏 loading
         });
     }
-  }, [googleCode, googleState, googleError, isAuthFinished]);
+  }, [googleCode, googleState, googleError, isAuthFinished, handleStartClick]);
 
 
   if (error) {
@@ -72,11 +71,6 @@ export const LoginGoogle = () => {
       </div >
     );
   }
-
-
-  const handleStartClick = useCallback(() => {
-    window.open(WHATSAPP_SUCCESS_URL, '_blank');
-  }, []);
   return (
     <div className="login-success">
       {/* Loading 蒙层 - 当正在处理认证时显示 */}
