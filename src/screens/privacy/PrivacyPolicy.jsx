@@ -1,9 +1,14 @@
 import React from "react";
+import { SEO } from "../../components/SEO";
 import "./style.css";
 
 export const PrivacyPolicy = () => {
   return (
     <div className="privacy-policy">
+      <SEO 
+        title="Privacy Policy" 
+        description="Privacy Policy for Jovida. Learn how we collect, use, and protect your personal health data." 
+      />
       <div className="privacy-policy__wrapper">
         <header className="privacy-policy__header">
           {/* <span

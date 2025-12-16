@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useWindowWidth } from "../../breakpoints";
 import { AppleIcon8 } from "../../icons/AppleIcon8";
 import { AppleIcon13 } from "../../icons/AppleIcon13";
+import { SEO } from "../../components/SEO";
 import "./style.css";
 
 const SUPPORT_EMAIL = "support@fluxvita.com";
@@ -128,6 +129,11 @@ export const HomePage = () => {
               : undefined,
       }}
     >
+      <SEO 
+        title="Jovida - AI Weight Loss & Diet Coach"
+        description="Achieve your weight loss goals with Jovida. Your AI-powered nutritionist and diet manager for personalized meal plans and weight management."
+        keywords="Jovida, AI Weight Loss, Weight Management, Diet Management, AI Nutritionist, AI Health Coach, Wellness Companion"
+      />
       {toastMessage && (
         <div className="email-toast" role="status" aria-live="polite">
           {toastMessage}
