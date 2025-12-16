@@ -1,9 +1,14 @@
 import React from "react";
+import { SEO } from "../../components/SEO";
 import "./style.css";
 
 export const TermsOfUse = () => {
   return (
     <div className="terms-of-use">
+      <SEO 
+        title="Terms and Conditions" 
+        description="Terms and Conditions for using Jovida services." 
+      />
       <div className="terms-of-use__wrapper">
         <header className="terms-of-use__header">
           {/* <span
@@ -667,7 +672,7 @@ export const TermsOfUse = () => {
           </p>
 
           <ol className="terms-of-use__ordered-list">
-            <li>Open iPhone Settings -> Your Name -> Subscriptions</li>
+            <li>Open iPhone Settings -&gt; Your Name -&gt; Subscriptions</li>
             <li>Select jovida subscription</li>
             <li>Tap "Cancel Subscription"</li>
           </ol>
@@ -677,7 +682,7 @@ export const TermsOfUse = () => {
           </p>
 
           <ol className="terms-of-use__ordered-list">
-            <li>Open Google Play Store -> Menu -> Subscriptions</li>
+            <li>Open Google Play Store -&gt; Menu -&gt; Subscriptions</li>
             <li>Select jovida subscription</li>
             <li>Tap "Cancel Subscription"</li>
           </ol>

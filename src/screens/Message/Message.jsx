@@ -1,10 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { SEO } from "../../components/SEO";
 import "./style.css";
 
 export const Message = () => {
   return (
     <div className="message">
+      <SEO 
+        title="Chat with Jovida - Your AI Nutritionist" 
+        description="Text Jovida for instant weight loss tips, diet management advice, and nutritional guidance via SMS or WhatsApp."
+        keywords="Chat with Nutritionist, AI Diet Coach, Weight Loss Chatbot, SMS Diet Tips, WhatsApp Health Coach"
+      />
       <div className="group">
         <div className="button">
           <div className="frame">

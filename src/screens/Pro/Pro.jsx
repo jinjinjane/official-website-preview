@@ -1,9 +1,15 @@
 import React from "react";
+import { SEO } from "../../components/SEO";
 import "./style.css";
 
 export const Pro = () => {
   return (
     <div className="pro">
+      <SEO 
+        title="Jovida Pro - Advanced Weight & Diet Management" 
+        description="Upgrade to Jovida Pro for personalized diet plans, advanced weight management tools, and 24/7 access to your AI Nutritionist."
+        keywords="Jovida Pro, Weight Loss App, Diet Management, AI Nutritionist, Premium Health Coach, Weight Management"
+      />
       <div className="group-18">
         <img
           className="image-container"
