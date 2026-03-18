@@ -6,6 +6,7 @@ import { LoginSuccess } from "./screens/LoginSuccess";
 import { Message } from "./screens/Message";
 import { Pro } from "./screens/Pro";
 import { PrivacyPolicy } from "./screens/privacy";
+import { SubscriptionGuide } from "./screens/SubscriptionGuide";
 import { TermsOfUse } from "./screens/terms";
 import { LoginGoogle } from "./screens/LoginGoogle";
 import { LoginApple } from "./screens/LoginApple/LoginApple";
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/terms-of-use",
     element: <TermsOfUse />,
+  },
+  {
+    path: "/subscription-guide",
+    element: <SubscriptionGuide />,
   },
   {
     path: "/message",
