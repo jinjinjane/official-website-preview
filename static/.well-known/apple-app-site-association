@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "MKDWSCTD3X.ai.jovida",
+        "paths": ["*"]
+      }
+    ]
+  }
+}

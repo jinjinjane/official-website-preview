@@ -390,6 +390,30 @@ export const PrivacyPolicy = () => {
               </li>
             </ul>
             <p>
+              <strong>Apple App Store Subscriptions (iOS Users):</strong>
+            </p>
+            <p>
+              If you subscribe via the Apple App Store, Apple processes your payment directly. We do not have access to your credit card information. 
+              Per Apple&apos;s guidelines, the following terms apply to App Store subscriptions:
+            </p>
+            <ul>
+              <li>
+                <strong>Payment:</strong> Charged to your iTunes Account at confirmation of purchase
+              </li>
+              <li>
+                <strong>Auto-Renewal:</strong> Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period
+              </li>
+              <li>
+                <strong>Renewal Charges:</strong> Account will be charged for renewal within 24-hours prior to the end of the current period
+              </li>
+              <li>
+                <strong>Management:</strong> You can manage subscriptions and turn off auto-renewal by going to your Account Settings after purchase
+              </li>
+              <li>
+                <strong>Free Trial:</strong> Any unused portion of a free trial period will be forfeited when you purchase a subscription
+              </li>
+            </ul>
+            <p>
               <strong>Communication Platforms:</strong>
             </p>
             <ul>

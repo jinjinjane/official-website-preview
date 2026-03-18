@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import PropTypes from 'prop-types';
 
-export const SEO = ({ title, description, keywords, type = 'website' }) => {
+export const SEO = ({ title, description, keywords, type = 'website', schema }) => {
   const siteTitle = 'Jovida';
   const defaultDescription = 'Meet Jovida, your 24/7 AI Health Coach and Nutritionist. Master weight loss, diet management, and holistic wellness with personalized AI guidance.';
   const defaultKeywords = 'Jovida, AI Weight Loss, Weight Management, Diet Management, AI Nutritionist, AI Health Coach, Wellness Companion';
@@ -29,6 +29,13 @@ export const SEO = ({ title, description, keywords, type = 'website' }) => {
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={metaDescription} />
       {/* <meta name="twitter:image" content={image} /> */}
+
+      {/* Structured Data (JSON-LD) */}
+      {schema && (
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      )}
     </Helmet>
   );
 };
@@ -38,4 +45,5 @@ SEO.propTypes = {
   description: PropTypes.string,
   keywords: PropTypes.string,
   type: PropTypes.string,
+  schema: PropTypes.object,
 };

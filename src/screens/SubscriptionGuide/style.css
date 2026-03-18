@@ -1,0 +1,142 @@
+.subscription-guide {
+  align-items: center;
+  background-color: #ffffff;
+  color: #2c2c2b;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 96px 16px 120px;
+}
+
+.subscription-guide__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 820px;
+  width: 100%;
+}
+
+.subscription-guide__header {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+}
+
+.subscription-guide__title {
+  color: #1b1b1b;
+  font-family: "Urbanist", "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin: 0 0 20px;
+}
+
+.subscription-guide__subtitle {
+  color: rgba(44, 44, 43, 0.85);
+  font-family: "Urbanist", "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 4px 0 0;
+}
+
+.subscription-guide__updated {
+  color: rgba(44, 44, 43, 0.7);
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 6px 0 0;
+}
+
+.subscription-guide__section {
+  margin: 0;
+  scroll-margin-top: 120px;
+  text-align: left;
+}
+
+.subscription-guide__section h2 {
+  color: #1b1b1b;
+  font-family: "Urbanist", "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  margin: 0 0 16px;
+}
+
+.subscription-guide__section h3 {
+  color: #1b1b1b;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 24px 0 12px;
+}
+
+.subscription-guide__section p {
+  color: rgba(44, 44, 43, 0.9);
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+
+.subscription-guide__section ul,
+.subscription-guide__section ol {
+  color: rgba(44, 44, 43, 0.9);
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+
+.subscription-guide__section a {
+  color: #1355ff;
+  text-decoration: none;
+}
+
+.subscription-guide__section a:hover,
+.subscription-guide__section a:focus-visible {
+  text-decoration: underline;
+}
+
+.subscription-guide__toc {
+  display: grid;
+  gap: 10px;
+  list-style: decimal;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+
+.subscription-guide__list {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.subscription-guide__list li {
+  margin-bottom: 8px;
+}
+
+.subscription-guide__faq-item + .subscription-guide__faq-item {
+  margin-top: 24px;
+}
+
+@media (max-width: 600px) {
+  .subscription-guide {
+    padding: 72px 20px 96px;
+  }
+
+  .subscription-guide__header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .subscription-guide__title {
+    font-size: 28px;
+  }
+
+  .subscription-guide__section h2 {
+    font-size: 21px;
+  }
+
+  .subscription-guide__section h3 {
+    font-size: 17px;
+  }
+}

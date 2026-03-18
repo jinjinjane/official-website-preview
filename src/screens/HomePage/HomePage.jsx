@@ -117,6 +117,35 @@ export const HomePage = () => {
     [handleDownloadAppClick],
   );
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Jovida",
+        "url": "https://jovida.ai",
+        "logo": "https://jovida.ai/img/favicon.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": SUPPORT_EMAIL,
+          "contactType": "customer support"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Jovida",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "iOS",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "downloadUrl": IOS_APP_STORE_URL
+      }
+    ]
+  };
+
   return (
     <div
       className="home-page"
@@ -133,6 +162,7 @@ export const HomePage = () => {
         title="Jovida - AI Weight Loss & Diet Coach"
         description="Achieve your weight loss goals with Jovida. Your AI-powered nutritionist and diet manager for personalized meal plans and weight management."
         keywords="Jovida, AI Weight Loss, Weight Management, Diet Management, AI Nutritionist, AI Health Coach, Wellness Companion"
+        schema={schema}
       />
       {toastMessage && (
         <div className="email-toast" role="status" aria-live="polite">
