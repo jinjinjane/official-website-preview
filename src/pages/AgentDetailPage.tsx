@@ -159,7 +159,9 @@ const AgentDetailPage = () => {
               Get the Jovida app and activate this agent with one tap.
             </p>
             <a
-              href="#"
+              href="https://apps.apple.com/us/app/jovida/id6752009326"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
             >
               Get Jovida
