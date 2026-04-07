@@ -29,19 +29,20 @@ const BlogArticlePage = () => {
 
     while (i < lines.length) {
       const line = lines[i];
+      const trimmedLine = line.trim();
 
-      if (line.trim() === "") {
+      if (trimmedLine === "") {
         i++;
         continue;
       }
 
       // Table detection
-      if (line.includes("|") && lines[i + 1]?.includes("---")) {
-        const headers = line.split("|").filter(Boolean).map((h) => h.trim());
+      if (trimmedLine.includes("|") && lines[i + 1]?.trim().includes("---")) {
+        const headers = trimmedLine.split("|").filter(Boolean).map((h) => h.trim());
         i += 2;
         const rows: string[][] = [];
-        while (i < lines.length && lines[i].includes("|")) {
-          rows.push(lines[i].split("|").filter(Boolean).map((c) => c.trim()));
+        while (i < lines.length && lines[i].trim().includes("|")) {
+          rows.push(lines[i].trim().split("|").filter(Boolean).map((c) => c.trim()));
           i++;
         }
         elements.push(
@@ -69,32 +70,50 @@ const BlogArticlePage = () => {
         continue;
       }
 
-      if (line.startsWith("## ")) {
-        elements.push(<h2 key={i} className="font-display text-2xl font-bold text-foreground mt-10 mb-4">{line.slice(3)}</h2>);
+      if (trimmedLine.startsWith("## ")) {
+        elements.push(<h2 key={i} className="font-display text-2xl font-bold text-foreground mt-10 mb-4">{trimmedLine.slice(3)}</h2>);
         i++;
         continue;
       }
 
-      if (line.startsWith("### ")) {
-        elements.push(<h3 key={i} className="font-display text-xl font-bold text-foreground mt-8 mb-3">{line.slice(4)}</h3>);
+      if (trimmedLine.startsWith("### ")) {
+        elements.push(<h3 key={i} className="font-display text-xl font-bold text-foreground mt-8 mb-3">{trimmedLine.slice(4)}</h3>);
         i++;
         continue;
       }
 
-      if (line.startsWith("> ")) {
+      const imageMatch = trimmedLine.match(/^!\[(.*?)\]\((.*?)\)$/);
+      if (imageMatch) {
+        const [, alt, src] = imageMatch;
+        elements.push(
+          <figure key={i} className="my-8">
+            <img
+              src={src}
+              alt={alt}
+              className="w-full rounded-2xl border border-border object-cover"
+              loading="lazy"
+            />
+            {alt ? <figcaption className="mt-3 text-sm text-muted-foreground text-center">{alt}</figcaption> : null}
+          </figure>
+        );
+        i++;
+        continue;
+      }
+
+      if (trimmedLine.startsWith("> ")) {
         elements.push(
           <blockquote key={i} className="border-l-4 border-primary pl-4 my-6 italic text-muted-foreground text-lg">
-            {line.slice(2)}
+            {trimmedLine.slice(2)}
           </blockquote>
         );
         i++;
         continue;
       }
 
-      if (line.startsWith("- ")) {
+      if (trimmedLine.startsWith("- ")) {
         const listItems: string[] = [];
-        while (i < lines.length && lines[i].startsWith("- ")) {
-          listItems.push(lines[i].slice(2));
+        while (i < lines.length && lines[i].trim().startsWith("- ")) {
+          listItems.push(lines[i].trim().slice(2));
           i++;
         }
         elements.push(
@@ -107,10 +126,10 @@ const BlogArticlePage = () => {
         continue;
       }
 
-      if (/^\d+\.\s/.test(line)) {
+      if (/^\d+\.\s/.test(trimmedLine)) {
         const listItems: string[] = [];
-        while (i < lines.length && /^\d+\.\s/.test(lines[i])) {
-          listItems.push(lines[i].replace(/^\d+\.\s/, ""));
+        while (i < lines.length && /^\d+\.\s/.test(lines[i].trim())) {
+          listItems.push(lines[i].trim().replace(/^\d+\.\s/, ""));
           i++;
         }
         elements.push(
@@ -124,7 +143,7 @@ const BlogArticlePage = () => {
       }
 
       elements.push(
-        <p key={i} className="text-muted-foreground leading-relaxed my-4" dangerouslySetInnerHTML={{ __html: formatInline(line) }} />
+        <p key={i} className="text-muted-foreground leading-relaxed my-4" dangerouslySetInnerHTML={{ __html: formatInline(trimmedLine) }} />
       );
       i++;
     }
@@ -133,9 +152,26 @@ const BlogArticlePage = () => {
   };
 
   const formatInline = (text: string): string => {
-    return text
+    const linkPlaceholders: string[] = [];
+
+    const withMarkdownLinks = text.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, (_, label: string, url: string) => {
+      const placeholder = `__LINK_PLACEHOLDER_${linkPlaceholders.length}__`;
+      linkPlaceholders.push(
+        `<a href="${url}" target="_blank" rel="noreferrer" class="text-primary underline underline-offset-4">${label}</a>`
+      );
+      return placeholder;
+    });
+
+    const withRawUrls = withMarkdownLinks.replace(
+      /(https?:\/\/[^\s<]+)/g,
+      '<a href="$1" target="_blank" rel="noreferrer" class="text-primary underline underline-offset-4">$1</a>'
+    );
+
+    const withFormatting = withRawUrls
       .replace(/\*\*(.+?)\*\*/g, '<strong class="text-foreground font-semibold">$1</strong>')
       .replace(/\*(.+?)\*/g, "<em>$1</em>");
+
+    return withFormatting.replace(/__LINK_PLACEHOLDER_(\d+)__/g, (_, index: string) => linkPlaceholders[Number(index)]);
   };
 
   // Build FAQ JSON-LD
@@ -192,6 +228,10 @@ const BlogArticlePage = () => {
             alt={post.title}
             className="w-full rounded-2xl mb-12 object-cover max-h-96"
           />
+
+          <p className="-mt-4 mb-12 text-base md:text-lg text-muted-foreground italic leading-relaxed">
+            {post.excerpt}
+          </p>
 
           <div className="prose-jovida">
             {renderContent(post.content)}
