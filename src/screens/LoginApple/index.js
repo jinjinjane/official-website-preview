@@ -1,1 +1,0 @@
-export { LoginGoogle } from "./LoginApple";

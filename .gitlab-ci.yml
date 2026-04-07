@@ -3,7 +3,7 @@ variables:
   SERVER: $CI_PROJECT_NAME
   VERSION: $CI_COMMIT_SHA
   IMAGE_TAG_PROD: ${CI_COMMIT_TAG}-${CI_COMMIT_SHORT_SHA}
-  IMAGE_TAG_DEV: dev-${CI_COMMIT_BRANCH}${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}
+  IMAGE_TAG_DEV: dev-${CI_COMMIT_REF_SLUG}-${CI_COMMIT_SHORT_SHA}
   IMAGE_US_EAST: sea-registry.us-east-1.cr.aliyuncs.com/${CI_PROJECT_PATH}
   IMAGE_SGP: sea-registry.ap-southeast-1.cr.aliyuncs.com/${CI_PROJECT_PATH}
 
@@ -30,11 +30,10 @@ default:
     - echo "IMAGE_TAG_DEV ${IMAGE_TAG_DEV}"
     - echo "IMAGE_US_EAST ${IMAGE_US_EAST}"
     - echo "IMAGE_SGP ${IMAGE_SGP}"
-    - export NODE_VERSION=18
+    - export NODE_VERSION=20
     - node --version
     - npm --version
 
-# https://docs.gitlab.com/ee/ci/pipelines/pipeline_architectures.html
 stages:
   - lint
   - image
@@ -44,12 +43,13 @@ lint:
   stage: lint
   script:
     - npm ci
+    - npm run lint
+    - npm run test
     - npm run build
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
       - node_modules/
-
 
 image-push-sgp-dev:
   stage: image
@@ -71,33 +71,32 @@ image-push-us-prod:
     - when: manual
       allow_failure: true
 
-#deploy-sgp-dev:
-#  stage: deploy
-#  tags:
-#    - dev-ci-ucenter-cn
-#  variables:
-#    CI_DEBUG_TRACE: "true"
-#  script:
-#    - /deploy/run.sh dev ${IMAGE_TAG_DEV}
-#  rules:
-#    # - if: $CI_COMMIT_TITLE =~ /^.*(deploy|deploy[^-].*)$/
-#    - if: $CI_COMMIT_TITLE =~ /.*deploy-dev.*/
-#    - if: $CI_COMMIT_TITLE =~ /.*deploy-both.*/
-#    - when: manual
-#      allow_failure: true
-#
-#deploy-us-east-test:
-#  stage: deploy
-#  tags:
-#    - us-east
-#  image:
-#    name: cr.aliyuncs.com/devops/stepbase-build:latest
-#  variables:
-#    CI_DEBUG_TRACE: "true"
-#  script:
-#    - /deploy/run.sh test ${IMAGE_TAG_DEV}
-#  rules:
-#    - if: $CI_COMMIT_TITLE =~ /.*deploy-test.*/
-#    - if: $CI_COMMIT_TITLE =~ /.*deploy-both.*/
-#    - when: manual
-#      allow_failure: true
+deploy-sgp-dev:
+  stage: deploy
+  tags:
+    - dev-ci-ucenter-cn
+  variables:
+    CI_DEBUG_TRACE: "true"
+  script:
+    - /deploy/run.sh dev ${IMAGE_TAG_DEV}
+  rules:
+    - if: $CI_COMMIT_TITLE =~ /.*deploy-dev.*/
+    - if: $CI_COMMIT_TITLE =~ /.*deploy-both.*/
+    - when: manual
+      allow_failure: true
+
+deploy-us-east-test:
+  stage: deploy
+  tags:
+    - us-east
+  image:
+    name: cr.aliyuncs.com/devops/stepbase-build:latest
+  variables:
+    CI_DEBUG_TRACE: "true"
+  script:
+    - /deploy/run.sh test ${IMAGE_TAG_DEV}
+  rules:
+    - if: $CI_COMMIT_TITLE =~ /.*deploy-test.*/
+    - if: $CI_COMMIT_TITLE =~ /.*deploy-both.*/
+    - when: manual
+      allow_failure: true

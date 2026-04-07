@@ -1,0 +1,261 @@
+import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { blogPosts } from "@/data/blogData";
+import { ArrowLeft } from "lucide-react";
+
+const BlogArticlePage = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const post = blogPosts.find((p) => p.slug === slug);
+
+  if (!post) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <main className="pt-28 pb-24 px-4 text-center">
+          <h1 className="font-display text-3xl font-bold text-foreground">Article Not Found</h1>
+          <Link to="/blog" className="mt-4 inline-block text-primary underline">Back to Blog</Link>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  const renderContent = (content: string) => {
+    const lines = content.trim().split("\n");
+    const elements: JSX.Element[] = [];
+    let i = 0;
+
+    while (i < lines.length) {
+      const line = lines[i];
+      const trimmedLine = line.trim();
+
+      if (trimmedLine === "") {
+        i++;
+        continue;
+      }
+
+      // Table detection
+      if (trimmedLine.includes("|") && lines[i + 1]?.trim().includes("---")) {
+        const headers = trimmedLine.split("|").filter(Boolean).map((h) => h.trim());
+        i += 2;
+        const rows: string[][] = [];
+        while (i < lines.length && lines[i].trim().includes("|")) {
+          rows.push(lines[i].trim().split("|").filter(Boolean).map((c) => c.trim()));
+          i++;
+        }
+        elements.push(
+          <div key={i} className="overflow-x-auto my-6">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr>
+                  {headers.map((h, j) => (
+                    <th key={j} className="text-left p-3 bg-secondary text-secondary-foreground font-semibold border-b border-border">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((row, j) => (
+                  <tr key={j} className="border-b border-border">
+                    {row.map((cell, k) => (
+                      <td key={k} className="p-3 text-muted-foreground">{cell}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+        continue;
+      }
+
+      if (trimmedLine.startsWith("## ")) {
+        elements.push(<h2 key={i} className="font-display text-2xl font-bold text-foreground mt-10 mb-4">{trimmedLine.slice(3)}</h2>);
+        i++;
+        continue;
+      }
+
+      if (trimmedLine.startsWith("### ")) {
+        elements.push(<h3 key={i} className="font-display text-xl font-bold text-foreground mt-8 mb-3">{trimmedLine.slice(4)}</h3>);
+        i++;
+        continue;
+      }
+
+      const imageMatch = trimmedLine.match(/^!\[(.*?)\]\((.*?)\)$/);
+      if (imageMatch) {
+        const [, alt, src] = imageMatch;
+        elements.push(
+          <figure key={i} className="my-8">
+            <img
+              src={src}
+              alt={alt}
+              className="w-full rounded-2xl border border-border object-cover"
+              loading="lazy"
+            />
+            {alt ? <figcaption className="mt-3 text-sm text-muted-foreground text-center">{alt}</figcaption> : null}
+          </figure>
+        );
+        i++;
+        continue;
+      }
+
+      if (trimmedLine.startsWith("> ")) {
+        elements.push(
+          <blockquote key={i} className="border-l-4 border-primary pl-4 my-6 italic text-muted-foreground text-lg">
+            {trimmedLine.slice(2)}
+          </blockquote>
+        );
+        i++;
+        continue;
+      }
+
+      if (trimmedLine.startsWith("- ")) {
+        const listItems: string[] = [];
+        while (i < lines.length && lines[i].trim().startsWith("- ")) {
+          listItems.push(lines[i].trim().slice(2));
+          i++;
+        }
+        elements.push(
+          <ul key={i} className="list-disc list-inside space-y-2 my-4 text-muted-foreground">
+            {listItems.map((item, j) => (
+              <li key={j} dangerouslySetInnerHTML={{ __html: formatInline(item) }} />
+            ))}
+          </ul>
+        );
+        continue;
+      }
+
+      if (/^\d+\.\s/.test(trimmedLine)) {
+        const listItems: string[] = [];
+        while (i < lines.length && /^\d+\.\s/.test(lines[i].trim())) {
+          listItems.push(lines[i].trim().replace(/^\d+\.\s/, ""));
+          i++;
+        }
+        elements.push(
+          <ol key={i} className="list-decimal list-inside space-y-2 my-4 text-muted-foreground">
+            {listItems.map((item, j) => (
+              <li key={j} dangerouslySetInnerHTML={{ __html: formatInline(item) }} />
+            ))}
+          </ol>
+        );
+        continue;
+      }
+
+      elements.push(
+        <p key={i} className="text-muted-foreground leading-relaxed my-4" dangerouslySetInnerHTML={{ __html: formatInline(trimmedLine) }} />
+      );
+      i++;
+    }
+
+    return elements;
+  };
+
+  const formatInline = (text: string): string => {
+    const linkPlaceholders: string[] = [];
+
+    const withMarkdownLinks = text.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, (_, label: string, url: string) => {
+      const placeholder = `__LINK_PLACEHOLDER_${linkPlaceholders.length}__`;
+      linkPlaceholders.push(
+        `<a href="${url}" target="_blank" rel="noreferrer" class="text-primary underline underline-offset-4">${label}</a>`
+      );
+      return placeholder;
+    });
+
+    const withRawUrls = withMarkdownLinks.replace(
+      /(https?:\/\/[^\s<]+)/g,
+      '<a href="$1" target="_blank" rel="noreferrer" class="text-primary underline underline-offset-4">$1</a>'
+    );
+
+    const withFormatting = withRawUrls
+      .replace(/\*\*(.+?)\*\*/g, '<strong class="text-foreground font-semibold">$1</strong>')
+      .replace(/\*(.+?)\*/g, "<em>$1</em>");
+
+    return withFormatting.replace(/__LINK_PLACEHOLDER_(\d+)__/g, (_, index: string) => linkPlaceholders[Number(index)]);
+  };
+
+  // Build FAQ JSON-LD
+  const faqJsonLd = post.faq && post.faq.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": post.faq.map((item) => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer,
+      },
+    })),
+  } : null;
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>{post.metaTitle}</title>
+        <meta name="description" content={post.metaDescription} />
+        <meta name="keywords" content={post.keywords} />
+        <meta property="og:title" content={post.metaTitle} />
+        <meta property="og:description" content={post.metaDescription} />
+        <meta property="og:type" content="article" />
+        {faqJsonLd && (
+          <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+        )}
+      </Helmet>
+      <Navbar />
+      <main className="pt-28 pb-24 px-4">
+        <article className="max-w-3xl mx-auto">
+          <Link to="/blog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
+            <ArrowLeft size={16} />
+            Back to Blog
+          </Link>
+
+          <span className="inline-block text-xs bg-primary/20 text-foreground px-3 py-1 rounded-full font-medium mb-4">
+            {post.category}
+          </span>
+
+          <h1 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight">
+            {post.title}
+          </h1>
+
+          <div className="mt-4 flex items-center gap-3 text-sm text-muted-foreground mb-8">
+            <span>{post.date}</span>
+            <span>&middot;</span>
+            <span>{post.readTime} read</span>
+          </div>
+
+          <img
+            src={post.coverImage}
+            alt={post.title}
+            className="w-full rounded-2xl mb-12 object-cover max-h-96"
+          />
+
+          <p className="-mt-4 mb-12 text-base md:text-lg text-muted-foreground italic leading-relaxed">
+            {post.excerpt}
+          </p>
+
+          <div className="prose-jovida">
+            {renderContent(post.content)}
+          </div>
+
+          {/* FAQ Section */}
+          {post.faq && post.faq.length > 0 && (
+            <section className="mt-16 border-t border-border pt-12">
+              <h2 className="font-display text-2xl font-bold text-foreground mb-8">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                {post.faq.map((item, idx) => (
+                  <div key={idx} className="bg-card rounded-2xl p-6 border border-border">
+                    <h3 className="font-display text-lg font-bold text-foreground mb-2">{item.question}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+        </article>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default BlogArticlePage;

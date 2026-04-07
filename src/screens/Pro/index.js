@@ -1,1 +1,0 @@
-export { Pro } from "./Pro";
