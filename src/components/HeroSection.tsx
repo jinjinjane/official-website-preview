@@ -37,6 +37,10 @@ const HeroSection = () => {
           <img
             src={heroVisual}
             alt="Jovida proactive AI life agent app interface"
+            loading="eager"
+            fetchPriority="high"
+            width={1020}
+            height={1022}
             className="w-full max-w-md md:max-w-lg 2xl:max-w-xl 3xl:max-w-3xl" />
         </div>
       </div>
