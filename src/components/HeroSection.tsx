@@ -1,4 +1,4 @@
-import heroVisual from "@/assets/hero-visual.png";
+import heroVisual from "@/assets/hero-visual.webp";
 
 const HeroSection = () => {
   return (

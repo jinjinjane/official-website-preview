@@ -1,15 +1,15 @@
-import blogProactiveAgent from "@/assets/blog-proactive-agent.png";
-import blogOpenclaw from "@/assets/blog-openclaw.png";
-import blogGemini from "@/assets/blog-gemini.png";
-import blogMemory from "@/assets/blog-memory.png";
-import blogBehaviorCover from "@/assets/20260407/cover.jpeg";
-import blogBehaviorHope from "@/assets/20260407/hope.png";
-import blogBehaviorCloudAgent from "@/assets/20260407/cloud-agent.png";
-import blogBehaviorGoal from "@/assets/20260407/goal.png";
+import blogProactiveAgent from "@/assets/blog-proactive-agent.webp";
+import blogOpenclaw from "@/assets/blog-openclaw.webp";
+import blogGemini from "@/assets/blog-gemini.webp";
+import blogMemory from "@/assets/blog-memory.webp";
+import blogBehaviorCover from "@/assets/20260407/cover.webp";
+import blogBehaviorHope from "@/assets/20260407/hope.webp";
+import blogBehaviorCloudAgent from "@/assets/20260407/cloud-agent.webp";
+import blogBehaviorGoal from "@/assets/20260407/goal.webp";
 import blogGpt55Agent from "@/assets/blog-gpt55-agent.svg";
 
-import blogNutrition from "@/assets/blog-nutrition.png";
-import blogWeightLoss from "@/assets/blog-weight-loss.png";
+import blogNutrition from "@/assets/blog-nutrition.webp";
+import blogWeightLoss from "@/assets/blog-weight-loss.webp";
 
 export interface BlogPost {
   slug: string;

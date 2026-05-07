@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logoText from "@/assets/logo-text.png";
+import logoText from "@/assets/logo-text.webp";
 
 const navItems = [
   { label: "Features", href: "/#features" },
