@@ -7,6 +7,7 @@ import { featuredAgents, existingAgents, categories } from "@/data/agentsData";
 import { Star } from "lucide-react";
 
 const AgentsPage = () => {
+  const canonicalUrl = "https://jovida.ai/agents";
   const [activeCategory, setActiveCategory] = useState("All");
 
   const allAgents = [...featuredAgents, ...existingAgents];
@@ -25,6 +26,14 @@ const AgentsPage = () => {
           name="keywords"
           content="AI agents, goal agents, weight loss agent, skincare agent, quit smoking, English learning, manifestation, AI coaching, personalized nudges"
         />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content="Playbook – Browse Goal-Specific AI Agents | Jovida" />
+        <meta property="og:description" content="Explore the Jovida Agent Square — specialized AI agents for weight loss, skincare, language learning, quitting smoking, manifestation, and more. Activate with one tap." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Playbook – Browse Goal-Specific AI Agents | Jovida" />
+        <meta name="twitter:description" content="Explore the Jovida Agent Square — specialized AI agents for weight loss, skincare, language learning, quitting smoking, manifestation, and more. Activate with one tap." />
       </Helmet>
       <Navbar />
       <main className="pt-28 pb-24 px-4">

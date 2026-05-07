@@ -1,4 +1,4 @@
-import heroVisual from "@/assets/hero-visual.png";
+import heroVisual from "@/assets/hero-visual.webp";
 
 const HeroSection = () => {
   return (
@@ -11,11 +11,11 @@ const HeroSection = () => {
             <span className="text-gradient-lime">AI Life Agent</span>
           </h1>
           <h2 className="mt-4 font-display text-2xl md:text-3xl 2xl:text-4xl 3xl:text-5xl font-bold text-foreground/80 tracking-tight">
-            Know your goals. Get you there.
+            Turn your desire into action
           </h2>
 
           <p className="mt-6 text-lg md:text-xl 2xl:text-2xl 3xl:text-3xl text-muted-foreground max-w-xl 3xl:max-w-2xl font-body">
-            Jovida handles the busywork and guides your progress step by step, bridging the gap between setting a goal and achieving real change.
+            Jovida turns what you want into clear next steps, reminds you at the right time, handles parts of the work for you, and helps you actually follow through.
           </p>
 
           <div className="mt-8 3xl:mt-12 flex flex-wrap gap-4">
