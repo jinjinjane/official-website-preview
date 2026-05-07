@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { blogPosts } from "@/data/blogData";
 
 const categories = ["All", "Agent Technology", "Product Philosophy", "Features Deep Dive"];
+const canonicalUrl = "https://jovida.ai/blog";
 
 const BlogPage = () => {
   return (
@@ -13,6 +14,14 @@ const BlogPage = () => {
         <title>Jovida Blog | AI Agent Insights, Proactive Coaching, and Product Updates</title>
         <meta name="description" content="Read about proactive AI agents, smart nudge technology, behavioral science, and how Jovida helps you build better habits and hit your goals." />
         <meta name="keywords" content="ai agent blog, proactive ai, smart nudge, habit building, ai life coach" />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content="Jovida Blog | AI Agent Insights, Proactive Coaching, and Product Updates" />
+        <meta property="og:description" content="Read about proactive AI agents, smart nudge technology, behavioral science, and how Jovida helps you build better habits and hit your goals." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Jovida Blog | AI Agent Insights, Proactive Coaching, and Product Updates" />
+        <meta name="twitter:description" content="Read about proactive AI agents, smart nudge technology, behavioral science, and how Jovida helps you build better habits and hit your goals." />
       </Helmet>
       <Navbar />
       <main className="pt-28 pb-24 px-4">

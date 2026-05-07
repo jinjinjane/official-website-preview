@@ -2,44 +2,80 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jovida.ai/</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://jovida.ai/agents</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://jovida.ai/blog</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://jovida.ai/company</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jovida.ai/blog/gpt-5-5-and-the-next-generation-of-ai-agents</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/blog/jovida-built-for-real-human-behavior-change</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/blog/proactive-ai-agent-vs-reactive-chatbot</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/blog/openclaw-open-source-ai-agent-framework-and-jovida</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/blog/gemini-3-1-and-proactive-ai-agents</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/blog/long-term-memory-ai-agent</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/blog/zero-math-nutrition-ai-agent</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/agents/skin-care-routine</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/agents/weight-loss</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/agents/quit-smoking</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/agents/manifestation-practice</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/agents/art-daily</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/agents/english-daily</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/agents/mystery-book</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/agents/sleep-well</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/agents/ai-founder-feed</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/agents/ai-radar</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/agents/travel-plan</loc>
+  </url>
+  <url>
+    <loc>https://jovida.ai/agents/secret-crush</loc>
   </url>
   <url>
     <loc>https://jovida.ai/privacy</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://jovida.ai/terms</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://jovida.ai/subscription-guide</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
 </urlset>

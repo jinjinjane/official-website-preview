@@ -3,12 +3,21 @@ import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 
 const CompanyPage = () => {
+  const canonicalUrl = "https://jovida.ai/company";
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
         <title>About FluxVita Corp | The Company Behind Jovida</title>
         <meta name="description" content="FluxVita Corp builds AI agents that help people achieve their goals. Meet the team behind Jovida, the proactive AI life agent." />
         <meta name="keywords" content="FluxVita Corp, Jovida company, AI agent company, proactive AI" />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content="About FluxVita Corp | The Company Behind Jovida" />
+        <meta property="og:description" content="FluxVita Corp builds AI agents that help people achieve their goals. Meet the team behind Jovida, the proactive AI life agent." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About FluxVita Corp | The Company Behind Jovida" />
+        <meta name="twitter:description" content="FluxVita Corp builds AI agents that help people achieve their goals. Meet the team behind Jovida, the proactive AI life agent." />
       </Helmet>
       <Navbar />
       <main className="pt-28 pb-24 px-4">

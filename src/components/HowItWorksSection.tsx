@@ -1,19 +1,19 @@
 const steps = [
   {
     num: "01",
-    title: "Set your goal",
-    desc: "Tell Jovida what you want to achieve. It breaks your goal into a daily plan and handles the setup work, like generating your grocery list, building a detox schedule, or rewriting your dating profile.",
+    title: "Start with what you want",
+    desc: "Bring Jovida a long-term goal, a passing thought, or something that caught your attention, like a link, a photo, or a video. Any of them can become the starting point for a plan.",
     accent: "bg-brand-orange",
   },
   {
     num: "02",
-    title: "Get nudged at the right moment",
-    desc: "Jovida reads your schedule and habits, then sends interactive task cards at the perfect time. Each card is a clear, completable action that fits your current moment.",
+    title: "Get the next steps mapped out",
+    desc: "Jovida turns that input into actionable steps, timing, and nudges so you know what to do next without having to figure everything out yourself.",
     accent: "bg-brand-purple",
   },
   {
     num: "03",
-    title: "Stay on track without thinking about it",
+    title: "Follow through with less friction",
     desc: "Jovida reaches out through WhatsApp and push notifications so you never need to remember to open an app. It adapts your plan as life changes and keeps momentum going.",
     accent: "bg-brand-blue",
   },
@@ -25,10 +25,10 @@ const HowItWorksSection = () => {
       <div className="max-w-5xl 2xl:max-w-6xl 3xl:max-w-[1800px] mx-auto">
         <div className="text-center mb-16 3xl:mb-24">
           <h2 className="font-display text-4xl md:text-5xl 2xl:text-6xl 3xl:text-7xl font-extrabold text-background tracking-tight">
-            How Jovida Drives<br />Your Success
+            How Jovida Turns<br />Intent Into Action
           </h2>
           <p className="mt-4 text-background/60 max-w-lg 3xl:max-w-2xl mx-auto 2xl:text-lg 3xl:text-xl">
-            From goal to daily action in under 60 seconds.
+            From spark to next step in under a minute.
           </p>
         </div>
 
