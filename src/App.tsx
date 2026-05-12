@@ -7,6 +7,7 @@ const AgentsPage = lazy(() => import("./pages/AgentsPage.tsx"));
 const AgentDetailPage = lazy(() => import("./pages/AgentDetailPage.tsx"));
 const BlogPage = lazy(() => import("./pages/BlogPage.tsx"));
 const BlogArticlePage = lazy(() => import("./pages/BlogArticlePage.tsx"));
+const RichBlogArticlePage = lazy(() => import("./pages/RichBlogArticlePage.tsx"));
 const CompanyPage = lazy(() => import("./pages/CompanyPage.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
@@ -71,6 +72,7 @@ const App = () => (
             <Route path="/agents" element={<AgentsPage />} />
             <Route path="/agents/:slug" element={<AgentDetailPage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/zh/:slug" element={<RichBlogArticlePage locale="zh" />} />
             <Route path="/blog/:slug" element={<BlogArticlePage />} />
             <Route path="/company" element={<CompanyPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />

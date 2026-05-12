@@ -1,12 +1,30 @@
+import { Suspense } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { blogPosts } from "@/data/blogData";
 import { ArrowLeft } from "lucide-react";
+import RichBlogArticleLayout from "@/features/blog/components/RichBlogArticleLayout";
+import { richBlogPosts } from "@/features/blog/posts";
 
 const BlogArticlePage = () => {
   const { slug } = useParams<{ slug: string }>();
+
+  const richPost = richBlogPosts.find(
+    (p) => p.slug === slug && p.locale === "en",
+  );
+  if (richPost) {
+    const ArticleComponent = richPost.Component;
+    return (
+      <Suspense fallback={<div className="min-h-screen bg-background" />}>
+        <RichBlogArticleLayout post={richPost}>
+          <ArticleComponent />
+        </RichBlogArticleLayout>
+      </Suspense>
+    );
+  }
+
   const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {

@@ -3,9 +3,23 @@ import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { blogPosts } from "@/data/blogData";
+import { richBlogPosts } from "@/features/blog/posts";
 
 const categories = ["All", "Agent Technology", "Product Philosophy", "Features Deep Dive"];
 const canonicalUrl = "https://jovida.ai/blog";
+
+type ListPost = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  date: string;
+  readTime: string;
+  coverImage: string;
+};
+
+const richEnPosts: ListPost[] = richBlogPosts.filter((p) => p.locale === "en");
+const gridPosts: ListPost[] = [...blogPosts.slice(1), ...richEnPosts];
 
 const BlogPage = () => {
   return (
@@ -73,7 +87,7 @@ const BlogPage = () => {
           </Link>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {blogPosts.slice(1).map((post) => (
+            {gridPosts.map((post) => (
               <Link key={post.slug} to={`/blog/${post.slug}`} className="block">
                 <article className="bg-card rounded-2xl border border-border hover:shadow-elevated transition-all hover:-translate-y-1 h-full overflow-hidden">
                   <img
