@@ -1,0 +1,44 @@
+# Jovida
+
+> Jovida is a proactive AI life agent for iOS that helps users turn intent into action through smart nudges, persistent long-term memory, and context-aware planning. Built around the Human Loop methodology to support real behavior change over time.
+
+Jovida is built on a custom Agent Framework with persistent project storage, schema-based UI generation, and event-driven feedback loops. The product ships a library of pre-built agents for specific life goals (skincare, weight loss, sleep, language learning, and more). The blog covers proactive AI agent design, behavior-change methodology, and the technical infrastructure behind agent-maintainable UI systems.
+
+## About
+
+- [Home](https://jovida.ai/): Overview of Jovida — proactive AI life agent, smart nudges, behavior change.
+- [Company](https://jovida.ai/company): About the team building Jovida.
+- [Agents directory](https://jovida.ai/agents): Catalog of pre-built Jovida agents for specific life goals.
+- [Blog](https://jovida.ai/blog): All articles.
+
+## Blog
+
+- [Agent Project: From Generative UI Output to a Maintainable UI Workspace](https://jovida.ai/blog/agent-project-genui): A technical argument for treating UI as a persistent agent-maintained project — with PROJECT.md, schema.json, and a data view — rather than a one-shot output. Compared in depth against A2UI, MCP-UI, OpenAI Apps SDK, AG-UI, and Vercel AI SDK. Full markdown: [/blog/agent-project-genui.md](https://jovida.ai/blog/agent-project-genui.md).
+- [GPT-5.5 and the Next Generation of AI Agents](https://jovida.ai/blog/gpt-5-5-and-the-next-generation-of-ai-agents): How GPT-5.5 raises the ceiling for agentic products — stronger planning, tool use, and persistence — and where Jovida applies the shift.
+- [Jovida: Built for Real Human Behavior Change](https://jovida.ai/blog/jovida-built-for-real-human-behavior-change): The Human Loop methodology — combining memory, context-aware timing, and an execution layer to close the gap between intention and follow-through.
+- [Proactive AI Agent vs Reactive Chatbot](https://jovida.ai/blog/proactive-ai-agent-vs-reactive-chatbot): Why proactive AI agents that watch goals and surface actions at the right moment outperform reactive chatbots for daily habit and goal tracking.
+- [OpenClaw: Open Source AI Agent Framework](https://jovida.ai/blog/openclaw-open-source-ai-agent-framework-and-jovida): Open source agent frameworks are making autonomous agents accessible to every developer; why this matters for the future of personal AI.
+- [Gemini 3.1 and Proactive AI Agents](https://jovida.ai/blog/gemini-3-1-and-proactive-ai-agents): What Gemini 3.1's longer context, stronger reasoning, and native tool use mean for proactive AI agent products.
+- [Long-Term Memory in AI Agents](https://jovida.ai/blog/long-term-memory-ai-agent): How persistent memory architecture lets an agent learn preferences, schedule, location, and patterns to deliver guidance that fits a user's life.
+- [Zero-Math Nutrition AI Agent](https://jovida.ai/blog/zero-math-nutrition-ai-agent): Designing a nutrition-tracking agent that translates body composition goals into meal plans and grocery lists without calorie math.
+
+## Agents
+
+- [Skin Care Routine](https://jovida.ai/agents/skin-care-routine): Your personal dermatologist in your pocket — daily skincare routines, face scans, weekly product analysis.
+- [Weight Loss](https://jovida.ai/agents/weight-loss): Small daily choices, big lasting results — meal options, movement reminders, weekly weigh-ins.
+- [Quit Smoking](https://jovida.ai/agents/quit-smoking): Every craving you beat makes the next one weaker — craving SOS, milestone tracking, evening reflection.
+- [Manifestation Practice](https://jovida.ai/agents/manifestation-practice): See it, feel it, become it — daily affirmations, visualizations, vision board, gratitude check-ins.
+- [Art Daily](https://jovida.ai/agents/art-daily): A small daily encounter with beauty and meaning — daily artwork, weekly visual recap, personal taste threads.
+- [English Daily](https://jovida.ai/agents/english-daily): One word a day, fluency on the way — daily vocabulary, quizzes, writing prompts, pronunciation challenge.
+- [Mystery Book](https://jovida.ai/agents/mystery-book): A little suspense, every day — reading nudges, title suggestions, weekly recap.
+- [Sleep Well](https://jovida.ai/agents/sleep-well): Better nights begin with gentler evenings — wind-down reminders, late-night recovery plans, weekly sleep review.
+- [AI Founder Feed](https://jovida.ai/agents/ai-founder-feed): The signals that matter, filtered for you — curated daily feed for AI founders.
+- [AI Radar](https://jovida.ai/agents/ai-radar): Signal over noise, every day — daily AI industry updates.
+- [Travel Plan](https://jovida.ai/agents/travel-plan): From travel idea to trip plan — personalized itinerary and trip planning.
+- [Secret Crush](https://jovida.ai/agents/secret-crush): Less overthinking, more honest momentum — relationship reflection and grounded advice.
+
+## Optional
+
+- [Privacy Policy](https://jovida.ai/privacy): Privacy practices and data handling.
+- [Terms of Service](https://jovida.ai/terms): Terms and conditions of use.
+- [Subscription Guide](https://jovida.ai/subscription-guide): Subscription plans, credits, and billing.
