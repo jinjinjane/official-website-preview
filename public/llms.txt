@@ -13,7 +13,9 @@ Jovida is built on a custom Agent Framework with persistent project storage, sch
 
 ## Blog
 
-- [Agent Project: From Generative UI Output to a Maintainable UI Workspace](https://jovida.ai/blog/agent-project-genui): A technical argument for treating UI as a persistent agent-maintained project — with PROJECT.md, schema.json, and a data view — rather than a one-shot output. Compared in depth against A2UI, MCP-UI, OpenAI Apps SDK, AG-UI, and Vercel AI SDK. Full markdown: [/blog/agent-project-genui.md](https://jovida.ai/blog/agent-project-genui.md).
+Every post below also exposes a clean Markdown version at the same URL with `.md` appended — for example, `/blog/agent-project-genui.md`. AI consumers should prefer the `.md` URL for full article content (the HTML route is a JavaScript-rendered SPA shell).
+
+- [Agent Project: From Generative UI Output to a Maintainable UI Workspace](https://jovida.ai/blog/agent-project-genui): A technical argument for treating UI as a persistent agent-maintained project — with PROJECT.md, schema.json, and a data view — rather than a one-shot output. Compared in depth against A2UI, MCP-UI, OpenAI Apps SDK, AG-UI, and Vercel AI SDK.
 - [GPT-5.5 and the Next Generation of AI Agents](https://jovida.ai/blog/gpt-5-5-and-the-next-generation-of-ai-agents): How GPT-5.5 raises the ceiling for agentic products — stronger planning, tool use, and persistence — and where Jovida applies the shift.
 - [Jovida: Built for Real Human Behavior Change](https://jovida.ai/blog/jovida-built-for-real-human-behavior-change): The Human Loop methodology — combining memory, context-aware timing, and an execution layer to close the gap between intention and follow-through.
 - [Proactive AI Agent vs Reactive Chatbot](https://jovida.ai/blog/proactive-ai-agent-vs-reactive-chatbot): Why proactive AI agents that watch goals and surface actions at the right moment outperform reactive chatbots for daily habit and goal tracking.
