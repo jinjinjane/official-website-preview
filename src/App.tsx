@@ -45,6 +45,40 @@ const TermsPage = lazy(async () => {
   };
 });
 
+const JovidaDailyPrivacyPage = lazy(async () => {
+  const [{ default: LegalDocumentPage }, { default: markdown }] = await Promise.all([
+    import("./pages/LegalDocumentPage.tsx"),
+    import("./content/legal/jovida-daily-privacy-policy.md?raw"),
+  ]);
+
+  return {
+    default: () => (
+      <LegalDocumentPage
+        title="Privacy Policy"
+        description="Jovida Daily privacy policy."
+        markdown={markdown}
+      />
+    ),
+  };
+});
+
+const JovidaDailyTermsPage = lazy(async () => {
+  const [{ default: LegalDocumentPage }, { default: markdown }] = await Promise.all([
+    import("./pages/LegalDocumentPage.tsx"),
+    import("./content/legal/jovida-daily-terms-and-conditions.md?raw"),
+  ]);
+
+  return {
+    default: () => (
+      <LegalDocumentPage
+        title="Terms and Conditions"
+        description="Jovida Daily terms and conditions."
+        markdown={markdown}
+      />
+    ),
+  };
+});
+
 const SubscriptionGuidePage = lazy(async () => {
   const [{ default: LegalDocumentPage }, { default: markdown }] = await Promise.all([
     import("./pages/LegalDocumentPage.tsx"),
@@ -80,6 +114,10 @@ const App = () => (
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/terms-of-use" element={<TermsPage />} />
             <Route path="/subscription-guide" element={<SubscriptionGuidePage />} />
+            <Route path="/jovida-daily/privacy" element={<JovidaDailyPrivacyPage />} />
+            <Route path="/jovida-daily/privacy-policy" element={<JovidaDailyPrivacyPage />} />
+            <Route path="/jovida-daily/terms" element={<JovidaDailyTermsPage />} />
+            <Route path="/jovida-daily/terms-of-use" element={<JovidaDailyTermsPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
