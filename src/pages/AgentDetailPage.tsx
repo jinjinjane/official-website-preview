@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { featuredAgents } from "@/data/agentsData";
+import { getAgentSeo } from "@/lib/agentSeo";
 import { ArrowLeft, Sparkles, MessageCircle, Zap, CheckCircle2 } from "lucide-react";
 
 const nudgeTypeIcons: Record<string, React.ReactNode> = {
@@ -35,7 +36,7 @@ const AgentDetailPage = () => {
           <h1 className="font-display text-3xl font-bold text-foreground mb-4">Agent Not Found</h1>
           <p className="text-muted-foreground mb-8">This agent doesn't have a detail page yet.</p>
           <Link to="/agents" className="text-primary hover:underline font-medium">
-            ← Back to Playbook
+            ← Back to Jovida Life Coach Playbook
           </Link>
         </main>
         <Footer />
@@ -43,30 +44,32 @@ const AgentDetailPage = () => {
     );
   }
 
+  const seo = getAgentSeo(agent);
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>{agent.seoTitle} | Jovida</title>
-        <meta name="description" content={agent.seoDescription} />
-        <meta name="keywords" content={agent.seoKeywords} />
-        <link rel="canonical" href={`https://willpower-unlocked-agent.lovable.app/agents/${agent.slug}`} />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="keywords" content={seo.keywords} />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="author" content="Jovida" />
+        <link rel="canonical" href={seo.canonicalUrl} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={`${agent.seoTitle} | Jovida`} />
-        <meta property="og:description" content={agent.seoDescription} />
-        <meta property="og:url" content={`https://willpower-unlocked-agent.lovable.app/agents/${agent.slug}`} />
+        <meta property="og:site_name" content="Jovida" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:url" content={seo.canonicalUrl} />
+        <meta property="og:image" content={seo.socialImage} />
+        <meta property="og:image:alt" content={`${agent.name} AI Agent by Jovida`} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${agent.seoTitle} | Jovida`} />
-        <meta name="twitter:description" content={agent.seoDescription} />
+        <meta name="twitter:title" content={seo.title} />
+        <meta name="twitter:description" content={seo.description} />
+        <meta name="twitter:image" content={seo.socialImage} />
+        <meta name="twitter:image:alt" content={`${agent.name} AI Agent by Jovida`} />
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            name: agent.name,
-            description: agent.seoDescription,
-            applicationCategory: "LifestyleApplication",
-            url: `https://willpower-unlocked-agent.lovable.app/agents/${agent.slug}`,
-            offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-          })}
+          {JSON.stringify(seo.structuredData)}
         </script>
       </Helmet>
       <Navbar />
@@ -78,7 +81,7 @@ const AgentDetailPage = () => {
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Playbook
+            Back to Jovida Life Coach Playbook
           </Link>
 
           {/* Hero */}
@@ -156,7 +159,7 @@ const AgentDetailPage = () => {
               Ready to start your {agent.name} journey?
             </h2>
             <p className="text-muted-foreground mb-6">
-              Get the Jovida app and activate this agent with one tap.
+              Get Jovida Life Coach and activate this agent with one tap.
             </p>
             <a
               href="https://apps.apple.com/us/app/jovida/id6752009326"
@@ -164,7 +167,7 @@ const AgentDetailPage = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
             >
-              Get Jovida
+              Get Jovida Life Coach
             </a>
           </section>
         </div>

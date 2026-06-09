@@ -21,7 +21,7 @@ We built Jovida, an iOS application designed to solve the execution gap. Think o
 
 Knowledge rarely prevents progress. The true problem lies in follow-through. Recent research from Anthropic confirms this shift in user needs. Beyond professional tasks, people increasingly turn to AI for personal transformation and life management, often valuing it more than pure productivity. Most products fall short because they stop assisting the moment a task is marked complete. They solve for information, but they do not solve for behavior.
 
-  ![What people hope for](/src/assets/20260407/hope.webp)
+  ![What people hope for](/official_website_preview/src/assets/20260407/hope.webp)
 
 Source: [What 81,000 people want from AI](https://www.anthropic.com/features/81k-interviews).
 
@@ -53,7 +53,7 @@ A prompt only works if it arrives when you can actually act on it. Jovida integr
 
 The system operates on a heartbeat mechanism, which is a background rhythm that checks in at key intervals. This proactive approach ensures your goals stay front-of-mind without the need for manual input. By combining environmental context with proactive timing, Jovida surfaces interventions only when they are most likely to result in action.
 
-![Human behavior loop](/src/assets/20260407/goal.webp)
+![Human behavior loop](/official_website_preview/src/assets/20260407/goal.webp)
 
 ## A System That Lives Beyond One App
 
@@ -63,7 +63,7 @@ In this system, the cloud functions as a high-level brain that handles complex p
 
 This registration process turns your hardware into the eyes and limbs of the agent. Your watch provides biometric signals like heart rate and sleep data, while your phone offers environmental context like location and movement. The cloud layer synthesizes these distributed inputs to understand your current state. As you add more devices or external skills, you expand the agent's overall capability network. This feedback loop ensures that the system stays grounded in your actual behavior, allowing the agent to initiate actions across messaging apps, email, or local interfaces exactly when the context requires it.
 
-![Edge-cloud integrated architecture](/src/assets/20260407/cloud-agent.webp)
+![Edge-cloud integrated architecture](/official_website_preview/src/assets/20260407/cloud-agent.webp)
 
 ## What's Next for Jovida
 

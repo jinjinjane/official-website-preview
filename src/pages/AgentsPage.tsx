@@ -8,42 +8,61 @@ import { Star } from "lucide-react";
 
 const AgentsPage = () => {
   const canonicalUrl = "https://jovida.ai/agents";
+  const pageTitle = "Jovida Life Coach Playbook | Goal-Specific AI Agents";
+  const pageDescription =
+    "Explore the Jovida Life Coach Playbook: specialized AI agents for weight loss, skincare, English learning, quitting smoking, sleep, travel, and more.";
   const [activeCategory, setActiveCategory] = useState("All");
-
-  const allAgents = [...featuredAgents, ...existingAgents];
-  const filtered = activeCategory === "All" ? allAgents : allAgents.filter((a) => a.category === activeCategory);
-  const isFeatured = (slug: string) => featuredAgents.some((a) => a.slug === slug);
 
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Playbook – Browse Goal-Specific AI Agents | Jovida</title>
-        <meta
-          name="description"
-          content="Explore the Jovida Agent Square — specialized AI agents for weight loss, skincare, language learning, quitting smoking, manifestation, and more. Activate with one tap."
-        />
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
         <meta
           name="keywords"
-          content="AI agents, goal agents, weight loss agent, skincare agent, quit smoking, English learning, manifestation, AI coaching, personalized nudges"
+          content="Jovida Life Coach, AI life coach agents, goal-specific AI agents, weight loss agent, skincare agent, English learning agent, quit smoking agent, sleep agent, travel planning agent, AI Playbook"
         />
         <link rel="canonical" href={canonicalUrl} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:title" content="Playbook – Browse Goal-Specific AI Agents | Jovida" />
-        <meta property="og:description" content="Explore the Jovida Agent Square — specialized AI agents for weight loss, skincare, language learning, quitting smoking, manifestation, and more. Activate with one tap." />
+        <meta property="og:site_name" content="Jovida" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Playbook – Browse Goal-Specific AI Agents | Jovida" />
-        <meta name="twitter:description" content="Explore the Jovida Agent Square — specialized AI agents for weight loss, skincare, language learning, quitting smoking, manifestation, and more. Activate with one tap." />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            url: canonicalUrl,
+            name: pageTitle,
+            description: pageDescription,
+            keywords:
+              "Jovida Life Coach, goal-specific AI agents, AI life coach agents, weight loss agent, skincare agent, learning agent",
+            isPartOf: {
+              "@type": "SoftwareApplication",
+              name: "Jovida Life Coach",
+              url: "https://jovida.ai/jovida-life-coach",
+            },
+            hasPart: featuredAgents.map((agent) => ({
+              "@type": "SoftwareApplication",
+              name: `${agent.name} AI Agent`,
+              url: `${canonicalUrl}/${agent.slug}`,
+              applicationSubCategory: agent.category,
+            })),
+          })}
+        </script>
       </Helmet>
       <Navbar />
       <main className="pt-28 pb-24 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="font-display text-4xl md:text-6xl font-black italic text-foreground">
-              Playbook
+              Jovida Life Coach Playbook
             </h1>
             <p className="mt-4 text-muted-foreground max-w-lg mx-auto">
-              Browse specialized agents for every life goal. Each agent is pre-built for its domain and adapts to your unique context.
+              Explore specialized agents inside Jovida Life Coach. Each one is built for a specific goal and adapts to your context.
             </p>
           </div>
 

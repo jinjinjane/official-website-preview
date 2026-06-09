@@ -18,7 +18,7 @@ const features = [
 {
   icon: MessageCircle,
   title: "Native Chat Integration",
-  desc: "Jovida reaches you where you already are. Get nudges through WhatsApp and push notifications so you never need to remember to open the app.",
+  desc: "Jovida Life Coach reaches you where you already are. Get nudges through WhatsApp and push notifications, so you do not have to remember to open the app.",
   color: "text-brand-purple",
   bg: "bg-brand-purple/15"
 }];

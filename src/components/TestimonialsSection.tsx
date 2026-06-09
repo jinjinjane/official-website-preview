@@ -5,7 +5,7 @@ const testimonials = [
     name: "Sarah K.",
     role: "Lost 12kg in 4 months",
     avatar: "S",
-    quote: "I tried so many fitness apps before. Jovida is the first one that tells me what to do and when. I just follow the nudge cards and it works.",
+    quote: "I tried so many fitness apps before. Jovida Life Coach is the first one that tells me what to do and when. I just follow the nudge cards and it works.",
     stars: 5,
     avatarColor: "bg-brand-orange",
   },
@@ -29,7 +29,7 @@ const testimonials = [
     name: "David L.",
     role: "Improved sleep score by 40%",
     avatar: "D",
-    quote: "Jovida remembered I have a problem with screens before bed and started sending me nudges earlier each week. It genuinely learns how I work.",
+    quote: "Jovida Life Coach remembered I have a problem with screens before bed and started sending me nudges earlier each week. It genuinely learns how I work.",
     stars: 5,
     avatarColor: "bg-lime",
   },
@@ -44,7 +44,7 @@ const TestimonialsSection = () => {
             Loved by Goal-Crushers
           </h2>
           <p className="mt-4 text-background/60 max-w-lg 3xl:max-w-2xl mx-auto 2xl:text-lg 3xl:text-xl">
-            Thousands of people are already outsourcing their willpower to Jovida.
+            Thousands of people are already building momentum with Jovida Life Coach.
           </p>
         </div>
 

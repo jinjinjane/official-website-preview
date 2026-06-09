@@ -4,7 +4,7 @@ const DemoVideoSection = () => {
       <div className="max-w-6xl 2xl:max-w-7xl 3xl:max-w-[1800px] mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-10 3xl:mb-16">
           <h2 className="font-display text-4xl md:text-5xl 2xl:text-6xl 3xl:text-7xl font-extrabold text-foreground tracking-tight">
-            Meet Jovida
+            Meet Jovida Life Coach
           </h2>
         </div>
 
@@ -13,7 +13,7 @@ const DemoVideoSection = () => {
             <iframe
               className="h-full w-full"
               src="https://www.youtube-nocookie.com/embed/jRj5846YRec?rel=0&modestbranding=1"
-              title="Jovida product demo video"
+              title="Jovida Life Coach product video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen

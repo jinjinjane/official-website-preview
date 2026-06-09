@@ -5,13 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run blog:md && vite build",
-    "build:dev": "npm run blog:md && vite build --mode development",
+    "build": "npm run blog:md && vite build && npm run agents:seo && npm run daily-features:seo",
+    "build:dev": "npm run blog:md && vite build --mode development && npm run agents:seo && npm run daily-features:seo",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "blog:md": "vite-node scripts/generate-blog-md.ts"
+    "blog:md": "vite-node scripts/generate-blog-md.ts",
+    "agents:seo": "vite-node scripts/generate-agent-pages.ts",
+    "daily-features:seo": "vite-node scripts/generate-daily-feature-pages.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

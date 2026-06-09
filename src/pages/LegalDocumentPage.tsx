@@ -8,14 +8,34 @@ type LegalDocumentPageProps = {
   title: string;
   description: string;
   markdown: string;
+  productName?: string;
+  canonicalPath?: string;
+  keywords?: string;
 };
 
-const LegalDocumentPage = ({ title, description, markdown }: LegalDocumentPageProps) => {
+const LegalDocumentPage = ({
+  title,
+  description,
+  markdown,
+  productName = "Jovida",
+  canonicalPath,
+  keywords,
+}: LegalDocumentPageProps) => {
+  const canonicalUrl = canonicalPath ? `https://jovida.ai${canonicalPath}` : undefined;
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>{title} | Jovida</title>
+        <title>{title} | {productName}</title>
         <meta name="description" content={description} />
+        {keywords && <meta name="keywords" content={keywords} />}
+        <meta name="robots" content="index, follow" />
+        {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Jovida" />
+        <meta property="og:title" content={`${title} | ${productName}`} />
+        <meta property="og:description" content={description} />
+        {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
       </Helmet>
 
       <Navbar />

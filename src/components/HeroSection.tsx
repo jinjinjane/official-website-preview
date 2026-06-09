@@ -5,17 +5,17 @@ const HeroSection = () => {
     <section className="gradient-hero min-h-screen flex items-center pt-24 pb-16 px-4 relative overflow-hidden">
       <div className="relative z-10 max-w-6xl 2xl:max-w-7xl 3xl:max-w-[1800px] mx-auto w-full grid md:grid-cols-2 gap-12 3xl:gap-20 items-center">
         <div>
-          <h1 className="font-display text-5xl md:text-7xl 2xl:text-8xl 3xl:text-9xl font-extrabold leading-tight text-foreground tracking-tight">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl 2xl:text-8xl 3xl:text-9xl font-extrabold leading-tight text-foreground tracking-tight">
             The Proactive
             <br />
-            <span className="text-gradient-lime">AI Life Agent</span>
+            <span className="text-gradient-lime">AI Life Coach</span>
           </h1>
           <h2 className="mt-4 font-display text-2xl md:text-3xl 2xl:text-4xl 3xl:text-5xl font-bold text-foreground/80 tracking-tight">
             Turn your desire into action
           </h2>
 
           <p className="mt-6 text-lg md:text-xl 2xl:text-2xl 3xl:text-3xl text-muted-foreground max-w-xl 3xl:max-w-2xl font-body">
-            Jovida turns what you want into clear next steps, reminds you at the right time, handles parts of the work for you, and helps you actually follow through.
+            Jovida Life Coach turns what you want into clear next steps, reminds you at the right time, handles parts of the work for you, and helps you actually follow through.
           </p>
 
           <div className="mt-8 3xl:mt-12 flex flex-wrap gap-4">
@@ -36,7 +36,7 @@ const HeroSection = () => {
         <div className="flex justify-center md:justify-end">
           <img
             src={heroVisual}
-            alt="Jovida proactive AI life agent app interface"
+            alt="Jovida Life Coach app interface"
             loading="eager"
             fetchPriority="high"
             width={1020}

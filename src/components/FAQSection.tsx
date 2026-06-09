@@ -7,28 +7,28 @@ import {
 
 const faqs = [
   {
-    q: "What exactly is a 'life agent'?",
-    a: "Think of Jovida as a proactive personal assistant living in your phone. Unlike to-do apps, it actively plans your day, handles tedious setup work, and keeps pushing you toward your goals with well-timed nudges.",
+    q: "What exactly is an AI life coach?",
+    a: "Think of Jovida Life Coach as a proactive personal coach in your phone. Unlike a basic to-do app, it helps plan your next steps, handles tedious setup work, and keeps you moving with well-timed nudges.",
   },
   {
     q: "What are nudges and how do they work?",
-    a: "Nudges are interactive task cards inside the app that tell you exactly what to do next. Jovida sends you push notifications and WhatsApp messages to make sure you see them at the right time, based on your calendar, location, and daily patterns.",
+    a: "Nudges are interactive task cards that tell you exactly what to do next. Your life coach sends push notifications and WhatsApp messages at useful moments based on your calendar, location, and daily patterns.",
   },
   {
     q: "What kind of goals can I set?",
-    a: "Anything from losing body fat and building a workout routine, to quitting caffeine, fixing your sleep, learning a new skill, or revamping your dating profile. If you have a personal goal, Jovida can help you get there.",
+    a: "Anything from losing body fat and building a workout routine to quitting caffeine, improving your sleep, learning a skill, or revamping your dating profile. If you have a personal goal, Jovida Life Coach can help you move it forward.",
   },
   {
-    q: "Does Jovida actually do work for me?",
-    a: "Yes. Jovida handles the busywork so you can focus on doing. For example, it generates your grocery list, creates a meal plan, builds a detox schedule, or drafts content for you. You just follow through.",
+    q: "Does Jovida Life Coach actually do work for me?",
+    a: "Yes. Your coach handles busywork so you can focus on doing. For example, it can generate a grocery list, create a meal plan, build a detox schedule, or draft content for you.",
   },
   {
     q: "Is my data safe?",
-    a: "Your data is encrypted end-to-end and never sold to third parties. Calendar and location access are optional and only used to make your experience more relevant. You control what Jovida can see.",
+    a: "Your data is encrypted end-to-end and never sold to third parties. Calendar and location access are optional and only used to make your experience more relevant. You control what your life coach can access.",
   },
   {
-    q: "Is Jovida free?",
-    a: "Every new user gets free credits on sign-up, enough to explore all features and see real results. After that, Jovida runs on a credit-based subscription. Every command you give and every autonomous decision the agent makes consumes credits, scaled to the complexity of the task. Choose from Standard (8,000 credits/month at $19.99), Pro (22,000 credits/month at $49.99), or Max (46,000 credits/month at $99.90). Annual plans save you roughly two months.",
+    q: "Is Jovida Life Coach free?",
+    a: "Every new user gets free credits on sign-up, enough to explore the core experience. After that, Jovida Life Coach uses a credit-based subscription. Commands and autonomous agent actions consume credits based on their complexity, with Standard, Pro, and Max plans available.",
   },
   {
     q: "What is the Agent Square?",
@@ -45,7 +45,7 @@ const FAQSection = () => {
             Frequently Asked Questions
           </h2>
           <p className="mt-4 text-muted-foreground max-w-lg 3xl:max-w-2xl mx-auto 2xl:text-lg 3xl:text-xl">
-            Everything you need to know about Jovida.
+            Everything you need to know about Jovida Life Coach.
           </p>
         </div>
 

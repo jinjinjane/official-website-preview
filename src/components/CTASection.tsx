@@ -10,7 +10,7 @@ const CTASection = () => {
           More Than a To-Do List
         </h2>
         <p className="mt-6 text-lg 2xl:text-xl 3xl:text-2xl text-background/60 max-w-xl 3xl:max-w-2xl mx-auto">
-          Jovida bridges the gap between intention and action. Set a goal, and your agent handles the rest.
+          Jovida Life Coach bridges the gap between intention and action. Set a goal, and your coach helps turn it into a plan you can follow.
         </p>
         <div className="mt-8 3xl:mt-12">
           <a

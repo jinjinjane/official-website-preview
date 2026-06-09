@@ -1,52 +1,93 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logoText from "@/assets/logo-text.webp";
+import jovidaWordmark from "@/assets/jovida-wordmark.png";
+import { dailyFeatures } from "@/data/dailyFeatures";
 
-const navItems = [
-  { label: "Features", href: "/#features" },
-  { label: "Playbook", href: "/agents" },
+const productItems = [
+  { label: "Jovida Daily", href: "/" },
+  { label: "Jovida Life Coach", href: "/jovida-life-coach" },
+];
+
+const resourceItems = [
   { label: "Blog", href: "/blog" },
+  { label: "Playbook", href: "/agents" },
   { label: "Company", href: "/company" },
+];
+
+const dailyFeatureItems = dailyFeatures.map((feature) => ({
+  label: feature.navLabel,
+  href: `/jovida-daily/features/${feature.slug}`,
+}));
+
+const lifeCoachFeatureItems = [
+  { label: "Core Features", href: "/jovida-life-coach#features" },
+  { label: "How It Works", href: "/jovida-life-coach#how-it-works" },
+  { label: "Use Cases", href: "/jovida-life-coach#difference" },
+  { label: "Product Demo", href: "/jovida-life-coach#demo" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
-
-  const handleNavClick = (href: string) => {
-    setOpen(false);
-    if (href.startsWith("/#")) {
-      const id = href.slice(2);
-      if (location.pathname === "/") {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      } else {
-        window.location.href = href;
-      }
-    }
-  };
+  const isDailyFeature = location.pathname.startsWith("/jovida-daily/features/");
+  const isLifeCoach = location.pathname === "/jovida-life-coach";
+  const featureItems = isLifeCoach ? lifeCoachFeatureItems : dailyFeatureItems;
+  const appUrl = isDailyFeature ? "#" : "https://apps.apple.com/us/app/jovida/id6752009326";
 
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-4xl 2xl:max-w-5xl 3xl:max-w-6xl">
       <div className="bg-card/90 backdrop-blur-xl rounded-full px-6 py-3 3xl:px-10 3xl:py-5 flex items-center justify-between shadow-elevated border border-border">
-        <Link to="/">
-          <img src={logoText} alt="Jovida" className="h-6 3xl:h-9" />
+        <Link to="/" className="flex items-center" aria-label="Jovida home">
+          <img src={jovidaWordmark} alt="Jovida" className="h-6 3xl:h-9 w-auto" />
         </Link>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-6 3xl:gap-10">
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              to={item.href}
-              onClick={() => handleNavClick(item.href)}
-              className="text-sm 3xl:text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {item.label}
-            </Link>
-          ))}
+        <div className="hidden md:flex items-center gap-5 3xl:gap-10">
+          <div className="relative group">
+            <button className="inline-flex items-center gap-1 text-sm 3xl:text-base font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Product <ChevronDown className="h-4 w-4" />
+            </button>
+            <div className="invisible absolute left-1/2 top-full z-50 w-52 -translate-x-1/2 pt-4 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <div className="rounded-xl border border-border bg-card p-2 shadow-elevated">
+                {productItems.map((item) => (
+                  <Link key={item.label} to={item.href} className="block rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground">
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="relative group">
+            <button className="inline-flex items-center gap-1 text-sm 3xl:text-base font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Features <ChevronDown className="h-4 w-4" />
+            </button>
+            <div className="invisible absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 pt-4 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <div className="rounded-xl border border-border bg-card p-2 shadow-elevated">
+                {featureItems.map((item) => (
+                  <Link key={item.label} to={item.href} className="block rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground">
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="relative group">
+            <button className="inline-flex items-center gap-1 text-sm 3xl:text-base font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Resources <ChevronDown className="h-4 w-4" />
+            </button>
+            <div className="invisible absolute left-1/2 top-full z-50 w-44 -translate-x-1/2 pt-4 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <div className="rounded-xl border border-border bg-card p-2 shadow-elevated">
+                {resourceItems.map((item) => (
+                  <Link key={item.label} to={item.href} className="block rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground">
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
           <a
-            href="https://apps.apple.com/us/app/jovida/id6752009326"
+            href={appUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-foreground text-background text-sm 3xl:text-base font-semibold px-5 py-2 3xl:px-7 3xl:py-3 rounded-full hover:opacity-90 transition-opacity inline-flex items-center gap-2"
@@ -71,18 +112,26 @@ const Navbar = () => {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden mt-2 bg-card/95 backdrop-blur-xl rounded-2xl p-4 shadow-elevated border border-border animate-scale-in">
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              to={item.href}
-              onClick={() => handleNavClick(item.href)}
-              className="block py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
-            >
+          <p className="px-2 pb-1 text-xs font-bold uppercase text-muted-foreground">Product</p>
+          {productItems.map((item) => (
+            <Link key={item.label} to={item.href} onClick={() => setOpen(false)} className="block rounded-lg px-2 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground">
+              {item.label}
+            </Link>
+          ))}
+          <p className="mt-3 px-2 pb-1 text-xs font-bold uppercase text-muted-foreground">Features</p>
+          {featureItems.map((item) => (
+            <Link key={item.label} to={item.href} onClick={() => setOpen(false)} className="block rounded-lg px-2 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground">
+              {item.label}
+            </Link>
+          ))}
+          <p className="mt-3 px-2 pb-1 text-xs font-bold uppercase text-muted-foreground">Resources</p>
+          {resourceItems.map((item) => (
+            <Link key={item.label} to={item.href} onClick={() => setOpen(false)} className="block rounded-lg px-2 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground">
               {item.label}
             </Link>
           ))}
           <a
-            href="https://apps.apple.com/us/app/jovida/id6752009326"
+            href={appUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-2 block bg-foreground text-background text-sm font-semibold px-5 py-2.5 rounded-full text-center"

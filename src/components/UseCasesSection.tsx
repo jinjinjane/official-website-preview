@@ -4,37 +4,37 @@ const differentiators = [
 {
   icon: Bell,
   title: "Proactive Agent",
-  desc: "Jovida anticipates your friction points and pushes smart nudges at the exact right moment to tell you what to do next.",
+  desc: "Jovida Life Coach anticipates your friction points and sends smart nudges at the right moment, so you know what to do next.",
   gradient: "from-brand-orange to-brand-yellow"
 },
 {
   icon: Brain,
   title: "Long-Term Memory",
-  desc: "Over time, Jovida remembers your past struggles and shifting preferences, ensuring your agent grows smarter with your evolution.",
+  desc: "Over time, your life coach remembers past struggles and changing preferences, so its guidance becomes more personal as you grow.",
   gradient: "from-brand-purple to-brand-blue"
 },
 {
   icon: MapPin,
   title: "Live Context",
-  desc: "By understanding your real-time schedule and location, Jovida ensures every piece of advice fits perfectly into your current situation.",
+  desc: "By understanding your schedule and location, it can shape advice around what is realistic in your current situation.",
   gradient: "from-brand-blue to-lime"
 },
 {
   icon: Puzzle,
   title: "Self-Evolving",
-  desc: "Jovida automatically equips relevant skills and agents uploaded by other users, instantly upgrading itself to fuel your specific goals.",
+  desc: "Jovida Life Coach can add relevant skills and community-built agents, adapting its support to the goals you choose.",
   gradient: "from-lime to-lime-light"
 },
 {
   icon: Wrench,
   title: "Zero Busywork",
-  desc: "Jovida tackles the tedious setup and actually does part of the work for you, so you can focus entirely on taking action.",
+  desc: "Your coach handles tedious setup and can do parts of the work for you, leaving you more energy to take action.",
   gradient: "from-brand-orange to-brand-purple"
 },
 {
   icon: TrendingUp,
   title: "Real Change",
-  desc: "Jovida consistently follows up, adjusts your path without judgment, and keeps you moving forward.",
+  desc: "It follows up, adjusts the plan without judgment, and helps you keep moving when life changes.",
   gradient: "from-brand-yellow to-brand-orange"
 }];
 
@@ -44,7 +44,7 @@ const UseCasesSection = () => {
       <div className="max-w-6xl 2xl:max-w-7xl 3xl:max-w-[1800px] mx-auto">
         <div className="text-center mb-16 3xl:mb-24">
           <h2 className="font-display text-4xl md:text-5xl 2xl:text-6xl 3xl:text-7xl font-extrabold text-foreground tracking-tight">
-            Why Jovida
+            Why Jovida Life Coach
           </h2>
           <p className="mt-4 text-muted-foreground max-w-lg 3xl:max-w-2xl mx-auto 2xl:text-lg 3xl:text-xl">Go beyond a goal tracker. A proactive agent that drives real results.</p>
         </div>
