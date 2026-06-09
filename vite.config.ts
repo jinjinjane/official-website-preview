@@ -6,6 +6,7 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   base:
+    process.env.GITHUB_ACTIONS === "true" ||
     process.env.CI_PROJECT_PATH === "janie/official_website_preview"
       ? "/official_website_preview/"
       : "/",
